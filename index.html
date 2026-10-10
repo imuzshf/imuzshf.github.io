@@ -244,6 +244,33 @@
       .pub-item { grid-template-columns: 1fr; }
       .pub-thumb { width: 100%; height: 140px; }
     }
+
+    /* ── NEW: Summary / Experience / Education styles ── */
+    .summary-card {
+      display: flex; gap: 18px; align-items: center;
+      background: linear-gradient(135deg, #f0f8ff, #eef6ff);
+      border: 1px solid #dbeaf8; padding: 18px; border-radius: 10px;
+      box-shadow: 0 6px 18px rgba(30,50,80,0.06); margin-bottom: 1.4rem;
+    }
+    .summary-avatar { width: 84px; height: 84px; border-radius: 10px; background: #d8e8f8; flex-shrink:0; display:flex; align-items:center; justify-content:center; }
+    .summary-avatar img { width:72px; height:72px; object-fit:cover; border-radius:6px; }
+    .summary-text h3 { margin-bottom:6px; font-size:1.05rem; }
+    .summary-text p { color: var(--muted); font-size:14px; }
+
+    .news-and-experience { display: grid; grid-template-columns: 1fr 360px; gap: 1.4rem; align-items:start; }
+    @media (max-width: 900px) { .news-and-experience { grid-template-columns: 1fr; } }
+
+    .experience-list { background: #fff; border:1px solid var(--border); padding: 12px; border-radius:8px; box-shadow: 0 6px 18px rgba(20,30,50,0.03); }
+    .exp-item { display:flex; gap:12px; padding:12px 8px; border-bottom:1px solid #f3f5f7; }
+    .exp-item:last-child { border-bottom: none; }
+    .exp-logo { width:52px; height:52px; border-radius:8px; background:#eef6fb; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .exp-body h4 { margin-bottom:4px; font-size:14px; }
+    .exp-body .meta { color:var(--muted); font-size:13px; margin-bottom:6px; }
+    .exp-body p { font-size:13.5px; color:var(--text); line-height:1.45; }
+
+    .edu-list { display:flex; flex-direction:column; gap:10px; }
+    .edu-item { background:#f7fbff; border:1px solid #e0efff; padding:10px 12px; border-radius:8px; }
+    .edu-item h4 { margin-bottom:4px; }
   </style>
 </head>
 <body>
@@ -347,7 +374,19 @@
     </div>
   </div>
 
-  <!-- RESEARCH INTERESTS -->
+  <!-- SUMMARY -->
+  <div class="summary-card">
+    <div class="summary-avatar">
+      <img src="photo.jpg" alt="avatar" onerror="this.style.display='none';" />
+    </div>
+    <div class="summary-text">
+      <h3>Summary</h3>
+      <p>
+        ML Engineer at <strong>General Motors</strong> working on cutting-edge <strong>Text-to-CAD</strong> generation. Completed MS in Computer Science (University of Michigan) and BS in Mathematics (NUST). Formerly a Graduate Research Assistant focused on 3D medical imaging, foundation models, and physics-informed graph learning.
+      </p>
+    </div>
+  </div>
+  <!-- Research Interests (commented out for now)
   <h2 id="interests">Research Interests</h2>
   <div class="interests-wrap">
     <span class="interest-tag">3D Medical Image Analysis</span>
@@ -361,42 +400,93 @@
     <span class="interest-tag">Physics-Informed Neural Networks</span>
     <span class="interest-tag">Graph Neural Networks</span>
   </div>
+  -->
 
-  <!-- MASTERS THESIS -->
-  <h2 id="thesis">Masters Thesis</h2>
-  <div class="thesis-box">
-    <h3>Towards Reliable Intracranial Aneurysm Analysis: Leveraging Foundation Models for Structure-Aware Detection and Segmentation across 3D CTA, ToF-MRA and DSA</h3>
-    <div class="thesis-meta">
-      MS Thesis &nbsp;·&nbsp; University of Michigan &nbsp;·&nbsp;
-      Advisor: <a href="https://experts.umich.edu/11932-khalid-malik">Prof. Khalid M. Malik</a> &nbsp;·&nbsp; Spring 2026
+  <div class="news-and-experience">
+    <div>
+      <!-- NEWS -->
+      <h2 id="news">News</h2>
+      <table class="news-table">
+        <tbody>
+          <tr>
+            <td>June 2026</td>
+            <td>Presenting our paper at <strong>CVPR 2026</strong> — awarded a <strong>fully sponsored trip</strong> including paper registration. 🎉</td>
+          </tr>
+          <tr>
+            <td>April 2026</td>
+            <td>Awarded <strong>University of Michigan Conference Travel Award ($5,000)</strong> to attend and present at <strong>ISBI 2026</strong> in London, UK. 🎉</td>
+          </tr>
+          <tr>
+            <td>March 2026</td>
+            <td>Received <strong>$1,000 award</strong> at the <strong>AI in Research Symposium 2026</strong>, one of University of Michigan's most prestigious recognition programs. 🎉</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <div class="thesis-desc">
-      Intracranial aneurysm analysis is essential for preventing rupture and life-threatening brain hemorrhage. This thesis proposes a unified framework for accurate aneurysm detection, localization, and segmentation across CTA, ToF-MRA, and DSA imaging. First, ARAN introduces artery-aware aneurysm detection by combining VISTA3D foundation model features with graph-based vascular geometry, achieving state-of-the-art results on CTA and ToF-MRA datasets. Second, FocusSDF presents a boundary-aware segmentation method using signed distance function supervision to improve lesion boundary precision. It consistently outperforms existing segmentation models across multiple medical imaging tasks. Together, these methods provide a clinically meaningful pipeline for future artery-aware aneurysm rupture risk prediction.
-    </div>
-    <div class="thesis-links">
-      <a class="thesis-btn primary" href="MS_Thesis.pdf" target="_blank">📄 Thesis PDF</a>
-      <!-- <a class="thesis-btn" href="https://drive.google.com/drive/u/0/folders/1O56S41gmBVUUPetWx-o0wX8845EKxOeE" target="_blank">🔗 Project Folder</a> -->
-    </div>
+
+    <aside class="experience-list" aria-labelledby="experience-heading">
+      <h2 id="experience-heading">Experience</h2>
+      <div class="exp-item">
+        <div class="exp-logo">GM</div>
+        <div class="exp-body">
+          <h4>Machine Learning Engineer — General Motors</h4>
+          <div class="meta">Aug 2026 - Present · Warren, Michigan</div>
+          <p>Working on Text-to-3D CAD generation and industrial ML systems for automotive design.</p>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-logo">A</div>
+        <div class="exp-body">
+          <h4>Co-Founder &amp; CEO — Aghaaz</h4>
+          <div class="meta">Aug 2026 - Present</div>
+          <p>Leading a non-profit focused on uplifting Pakistani youth through education and community programs.</p>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-logo">NU</div>
+        <div class="exp-body">
+          <h4>Lead — NUSTIAN USA (Membership Team)</h4>
+          <div class="meta">Jan 2025 - Present</div>
+          <p>Coordinated membership initiatives and community outreach for alumni network chapters.</p>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-logo">UM</div>
+        <div class="exp-body">
+          <h4>Graduate Research Assistant — University of Michigan</h4>
+          <div class="meta">Jan 2025 - Apr 2026 · Flint, MI</div>
+          <p>Worked on Multimodal Physics-Informed Graph Neural Networks for intracranial aneurysm hemodynamics and rupture prediction.</p>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-logo">NUST</div>
+        <div class="exp-body">
+          <h4>Research Assistant — NUST</h4>
+          <div class="meta">Jun 2023 - Jul 2023</div>
+          <p>Researched uncertainty quantification and polynomial chaos expansions for ML models.</p>
+        </div>
+      </div>
+    </aside>
   </div>
 
-  <!-- NEWS -->
-  <h2 id="news">News</h2>
-  <table class="news-table">
-    <tbody>
-      <tr>
-        <td>June 2026</td>
-        <td>Presenting our paper at <strong>CVPR 2026</strong> — awarded a <strong>fully sponsored trip</strong> including paper registration. 🎉</td>
-      </tr>
-      <tr>
-        <td>April 2026</td>
-        <td>Awarded <strong>University of Michigan Conference Travel Award ($5,000)</strong> to attend and present at <strong>ISBI 2026</strong> in London, UK. 🎉</td>
-      </tr>
-      <tr>
-        <td>March 2026</td>
-        <td>Received <strong>$1,000 award</strong> at the <strong>AI in Research Symposium 2026</strong>, one of University of Michigan's most prestigious recognition programs. 🎉</td>
-      </tr>
-    </tbody>
-  </table>
+  <!-- EDUCATION (includes thesis) -->
+  <h2 id="education">Education</h2>
+  <div class="edu-list">
+    <div class="edu-item">
+      <h4>MS in Computer Science — University of Michigan</h4>
+      <div class="meta">Completed Spring 2026</div>
+      <p>Merged thesis: <strong>Towards Reliable Intracranial Aneurysm Analysis</strong> — <a href="MS_Thesis.pdf" target="_blank">Thesis PDF</a></p>
+    </div>
+
+    <div class="edu-item">
+      <h4>BS in Mathematics — National University of Sciences and Technology (NUST), Islamabad</h4>
+      <div class="meta">Completed</div>
+    </div>
+  </div>
   <!-- <p class="news-more"><a href="#">View all news</a></p> -->
 
   <!-- PUBLICATIONS -->
