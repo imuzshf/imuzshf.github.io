@@ -72,9 +72,17 @@ h2{font-size:clamp(1.8rem,4vw,2.5rem);letter-spacing:-1px;margin-bottom:1.6rem}
 .glass:hover{border-color:rgba(124,92,255,.55);transform:translateY(-3px)}
 
 /* NEWS */
-.news{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
-.news .glass{padding:1.2rem 1.3rem;font-size:14.5px}
-.news time{display:inline-block;font:700 12px 'Space Grotesk';letter-spacing:1px;text-transform:uppercase;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:.4rem}
+.news{display:flex;flex-direction:column;gap:1rem}
+.nitem{display:grid;grid-template-columns:130px 1fr;gap:1.3rem;padding:1.3rem 1.5rem}
+.ndate{font:700 12px 'Space Grotesk';letter-spacing:1px;text-transform:uppercase;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;padding-top:.3rem}
+.nitem h3{font-size:1.08rem;margin-bottom:.45rem;display:flex;flex-wrap:wrap;align-items:center;gap:.6rem}
+.nitem p{font-size:14.5px;color:var(--muted)}
+.nitem p b{color:var(--text);font-weight:600}
+.new{font:700 10.5px Inter;letter-spacing:1px;padding:2px 9px;border-radius:999px;background:#34d399;color:#04231a}
+.nmeta{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.8rem}
+.nmeta span,.nmeta a{font-size:12px;padding:3px 11px;border-radius:999px;border:1px solid var(--card-b);color:var(--a2)}
+.nmeta a:hover{border-color:var(--a2);text-decoration:none}
+@media(max-width:640px){.nitem{grid-template-columns:1fr;gap:.4rem}}
 
 /* EXPERIENCE */
 .timeline{position:relative;padding-left:2.2rem}
@@ -200,11 +208,32 @@ footer{text-align:center;color:var(--muted);font-size:12.5px;margin:4rem 0 2rem}
 <section id="news" class="rv">
   <div class="eyebrow">Latest</div><h2>News</h2>
   <div class="news">
-    <div class="glass"><time>June 2026</time><br>Presenting our paper at <b>CVPR 2026</b>, with a <b>fully sponsored trip</b> including paper registration. 🎉</div>
-    <div class="glass"><time>April 2026</time><br>Awarded the <b>University of Michigan Conference Travel Award ($5,000)</b> to present at <b>ISBI 2026</b> in London, UK. 🎉</div>
-    <div class="glass"><time>March 2026</time><br>Received a <b>$1,000 award</b> at the <b>AI in Research Symposium 2026</b>, one of Michigan's most prestigious research recognitions. 🎉</div>
+    <div class="glass nitem">
+      <div class="ndate">August 2026</div>
+      <div><h3>Joined General Motors as a Machine Learning Engineer 🚗 <span class="new">NEW</span></h3>
+      <p>Excited to start a new chapter as an <b>ML Engineer at General Motors</b>, based in <b>Warren, Michigan</b>. I'm working on <b>Text-to-3D CAD generation</b>, building models that turn natural-language descriptions into editable 3D CAD designs.</p>
+      <div class="nmeta"><span>General Motors</span><span>Text-to-3D CAD</span><span>Warren, MI</span><a href="#experience">See experience →</a></div></div>
+    </div>
+    <div class="glass nitem">
+      <div class="ndate">June 2026</div>
+      <div><h3>Presenting at CVPR 2026 with a fully sponsored trip 🎉</h3>
+      <p>I was awarded a <b>fully sponsored trip to CVPR 2026 in Denver, Colorado</b>, covering <b>paper registration and travel</b>, to present our research at one of the top computer vision conferences in the world.</p>
+      <div class="nmeta"><span>CVPR 2026</span><span>Denver, CO</span><a href="#publications">See publications →</a></div></div>
+    </div>
+    <div class="glass nitem">
+      <div class="ndate">April 2026</div>
+      <div><h3>Awarded the UMich Conference Travel Award ($5,000) 🎉</h3>
+      <p>Received the <b>University of Michigan Conference Travel Award ($5,000)</b> to attend <b>ISBI 2026 in London, UK</b>, the 23rd IEEE International Symposium on Biomedical Imaging, where our paper <b>FocusSDF</b> was presented.</p>
+      <div class="nmeta"><span>ISBI 2026</span><span>London, UK</span><a href="#awards">See awards →</a></div></div>
+    </div>
+    <div class="glass nitem">
+      <div class="ndate">March 2026</div>
+      <div><h3>$1,000 award at the AI in Research Symposium 🎉</h3>
+      <p>Received a <b>$1,000 award</b> at the University of Michigan's <b>AI in Research Symposium 2026</b>, one of the institution's most prestigious research recognition programs.</p>
+      <div class="nmeta"><span>University of Michigan</span><span>AI in Research Symposium</span><a href="#awards">See awards →</a></div></div>
+    </div>
   </div>
-</section>
+  </section>
 
 <!-- EXPERIENCE -->
 <section id="experience" class="rv">
