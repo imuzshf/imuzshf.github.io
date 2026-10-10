@@ -88,6 +88,7 @@ h2{font-size:clamp(1.8rem,4vw,2.5rem);letter-spacing:-1px;margin-bottom:1.6rem}
 .logo span{display:none}
 .logo.fb span{display:block}
 .logo.fb{background:#fff;color:#12172a}
+.logo.um,.logo.um.fb{background:#00274c;color:#ffcb05;border:0} /* UMich keeps its navy + maize */
 .jhead h3{font-size:1.1rem}
 .org{color:var(--text);font-weight:500;font-size:14.5px}
 .meta{color:var(--muted);font-size:13px}
@@ -175,7 +176,7 @@ footer{text-align:center;color:var(--muted);font-size:12.5px;margin:4rem 0 2rem}
   <div class="photo-wrap">
     <img src="photo.jpg" alt="Muzammal Shafique" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
     <div class="ph">MS</div>
-    <span class="chip c1">🚗 GM</span><span class="chip c2">🎓 UMich</span><span class="chip c3">🎓 NUST</span>
+    <span class="chip c1">🚗 GM</span><span class="chip c2">🎓 UMich</span><span class="chip c3">📄 CVPR · ISBI</span>
   </div>
 </header>
 
@@ -211,21 +212,21 @@ footer{text-align:center;color:var(--muted);font-size:12.5px;margin:4rem 0 2rem}
   <div class="timeline">
 
     <div class="job glass now-job">
-      <div class="jhead"><div class="logo" style="--fb:#1a5cff"><img src="gm.png" alt="GM logo" onerror="this.remove();this.parentElement.classList.add('fb')" /><span>GM</span></div>
+      <div class="jhead"><div class="logo" style="--fb:#1a5cff"><img src="images/gm.png" alt="GM logo" onerror="this.remove();this.parentElement.classList.add('fb')" /><span>GM</span></div>
         <div><h3>Machine Learning Engineer</h3><div class="org">General Motors</div>
         <div class="meta">Aug 2026 – Present · Warren, Michigan, US</div></div></div>
       <p>Currently working on Text-to-3D CAD generation.</p>
     </div>
 
     <div class="job glass">
-      <div class="jhead"><div class="logo" style="--fb:linear-gradient(135deg,#16a34a,#0d9488)"><img src="aghaaz.png" alt="Ag logo" onerror="this.remove();this.parentElement.classList.add('fb')" /><span>Ag</span></div>
+      <div class="jhead"><div class="logo" style="--fb:linear-gradient(135deg,#16a34a,#0d9488)"><img src="images/aghaaz.png" alt="Ag logo" onerror="this.remove();this.parentElement.classList.add('fb')" /><span>Ag</span></div>
         <div><h3>Co-Founder &amp; CEO</h3><div class="org">Aghaaz</div>
         <div class="meta">Aug 2026 – Present</div></div></div>
       <p>Aghaaz is a non-profit initiative by the proud alumni of NUST, which primarily focuses on uplifting the Pakistani youth through education. To be part of this initiative, or for more information, visit us at <a href="https://aghaaz.org">aghaaz.org</a>.</p>
     </div>
 
     <div class="job glass">
-      <div class="jhead"><div class="logo" style="--fb:#1d4e89"><img src="nustian-usa.png" alt="NU logo" onerror="this.remove();this.parentElement.classList.add('fb')" /><span>NU</span></div>
+      <div class="jhead"><div class="logo" style="--fb:#1d4e89"><img src="images/nustian-usa.png" alt="NU logo" onerror="this.remove();this.parentElement.classList.add('fb')" /><span>NU</span></div>
         <div><h3>NUSTIAN USA</h3><div class="meta">3 yrs 3 mos</div></div></div>
       <div class="sub">
         <div><b>Lead Membership Team</b><div class="meta">Jan 2025 – Present · 1 yr 10 mos</div></div>
@@ -235,7 +236,7 @@ footer{text-align:center;color:var(--muted);font-size:12.5px;margin:4rem 0 2rem}
     </div>
 
     <div class="job glass">
-      <div class="jhead"><div class="logo" style="--fb:#00274c;--fbc:#ffcb05"><img src="umich.png" alt="UM logo" onerror="this.remove();this.parentElement.classList.add('fb')" /><span>UM</span></div>
+      <div class="jhead"><div class="logo um"><img src="images/umich.png" alt="UM logo" onerror="this.remove();this.parentElement.classList.add('fb')" /><span>UM</span></div>
         <div><h3>Graduate Research Assistant</h3><div class="org">University of Michigan</div>
         <div class="meta">Jan 2025 – Apr 2026 · 1 yr 4 mos · Flint, Michigan, US · On-site</div></div></div>
       <p>Worked on Multimodal Physics-Informed Graph Neural Networks for intracranial aneurysm hemodynamics and rupture prediction. Research interests included medical image (DSA, MRI, CTA, Ultrasound) analysis and segmentation, and Multimodal Physics-Informed Graph Neural Networks for aneurysm hemodynamics and rupture prediction.</p>
@@ -243,7 +244,7 @@ footer{text-align:center;color:var(--muted);font-size:12.5px;margin:4rem 0 2rem}
     </div>
 
     <div class="job glass">
-      <div class="jhead"><div class="logo" style="--fb:#0b3d91"><img src="nust.png" alt="NU logo" onerror="this.remove();this.parentElement.classList.add('fb')" /><span>NU</span></div>
+      <div class="jhead"><div class="logo" style="--fb:#0b3d91"><img src="images/nust.png" alt="NU logo" onerror="this.remove();this.parentElement.classList.add('fb')" /><span>NU</span></div>
         <div><h3>Research Assistant</h3><div class="org">National University of Sciences and Technology (NUST) · Part-time</div>
         <div class="meta">Jun 2023 – Jul 2023 · 2 mos · Islamabad, Pakistan · On-site</div></div></div>
       <p>Did a comprehensive research on Uncertainty Quantification of Machine Learning Models by using Polynomial Chaos Expansion (PCE).</p>
@@ -251,7 +252,7 @@ footer{text-align:center;color:var(--muted);font-size:12.5px;margin:4rem 0 2rem}
     </div>
 
     <div class="job glass">
-      <div class="jhead"><div class="logo" style="--fb:#0b3d91"><img src="nust.png" alt="NU logo" onerror="this.remove();this.parentElement.classList.add('fb')" /><span>NU</span></div>
+      <div class="jhead"><div class="logo" style="--fb:#0b3d91"><img src="images/nust.png" alt="NU logo" onerror="this.remove();this.parentElement.classList.add('fb')" /><span>NU</span></div>
         <div><h3>External Relations Intern</h3><div class="org">National University of Sciences and Technology (NUST) · Part-time</div>
         <div class="meta">May 2021 – Dec 2021 · 8 mos · University Advancement Office, NUST, Islamabad</div></div></div>
       <span class="tag">Microsoft Excel</span> <span class="tag">Communication</span>
@@ -264,7 +265,7 @@ footer{text-align:center;color:var(--muted);font-size:12.5px;margin:4rem 0 2rem}
   <div class="eyebrow">Learning</div><h2>Education</h2>
   <div class="edu">
     <div class="glass">
-      <div class="logo" style="--fb:#00274c;--fbc:#ffcb05"><img src="umich.png" alt="UM logo" onerror="this.remove();this.parentElement.classList.add('fb')" /><span>UM</span></div>
+      <div class="logo um"><img src="images/umich.png" alt="UM logo" onerror="this.remove();this.parentElement.classList.add('fb')" /><span>UM</span></div>
       <h3>MS in Computer Science</h3>
       <div class="org"><a href="https://umich.edu">University of Michigan</a>, USA</div>
       <div class="meta">Completed 2026</div>
@@ -277,7 +278,7 @@ footer{text-align:center;color:var(--muted);font-size:12.5px;margin:4rem 0 2rem}
       </div>
     </div>
     <div class="glass">
-      <div class="logo" style="--fb:#0b3d91"><img src="nust.png" alt="NU logo" onerror="this.remove();this.parentElement.classList.add('fb')" /><span>NU</span></div>
+      <div class="logo" style="--fb:#0b3d91"><img src="images/nust.png" alt="NU logo" onerror="this.remove();this.parentElement.classList.add('fb')" /><span>NU</span></div>
       <h3>BS in Mathematics</h3>
       <div class="org"><a href="https://nust.edu.pk">NUST</a>, Islamabad, Pakistan</div>
       <div class="meta">National University of Sciences and Technology</div>
