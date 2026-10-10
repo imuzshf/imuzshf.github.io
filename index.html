@@ -13,6 +13,7 @@
   --bg:#07090f;--card:rgba(255,255,255,.045);--card-b:rgba(255,255,255,.1);
   --text:#eef1f7;--muted:#9aa4b8;--a1:#7c5cff;--a2:#22d3ee;--a3:#ff6bb5;
   --grad:linear-gradient(120deg,var(--a1),var(--a2) 60%,var(--a3));
+  --logo-size:56px; /* <-- change this one value to resize ALL logos */
 }
 body.light{
   --bg:#f6f7fb;--card:rgba(255,255,255,.8);--card-b:rgba(20,30,60,.1);
@@ -82,7 +83,10 @@ h2{font-size:clamp(1.8rem,4vw,2.5rem);letter-spacing:-1px;margin-bottom:1.6rem}
 .job::before{content:"";position:absolute;left:calc(-2.2rem + 5px);top:1.7rem;width:14px;height:14px;border-radius:50%;background:var(--bg);border:3px solid var(--a2)}
 .job.now-job::before{border-color:#34d399;box-shadow:0 0 0 5px rgba(52,211,153,.2)}
 .jhead{display:flex;gap:1rem;align-items:flex-start}
-.logo{flex:none;width:52px;height:52px;border-radius:14px;display:grid;place-items:center;font:700 15px 'Space Grotesk';color:#fff}
+.logo{flex:none;width:var(--logo-size);height:var(--logo-size);border-radius:calc(var(--logo-size)*.26);display:grid;place-items:center;font:700 calc(var(--logo-size)*.3) 'Space Grotesk';color:#fff;overflow:hidden;background:#fff;border:1px solid var(--card-b)}
+.logo img{width:100%;height:100%;object-fit:contain;padding:calc(var(--logo-size)*.1)}
+.logo span{display:none}
+.logo.fb span{display:block}
 .jhead h3{font-size:1.1rem}
 .org{color:var(--text);font-weight:500;font-size:14.5px}
 .meta{color:var(--muted);font-size:13px}
@@ -95,11 +99,12 @@ h2{font-size:clamp(1.8rem,4vw,2.5rem);letter-spacing:-1px;margin-bottom:1.6rem}
 .edu{display:grid;grid-template-columns:1.3fr 1fr;gap:1rem}
 .edu .glass{padding:1.5rem}
 .edu h3{font-size:1.25rem;margin:.9rem 0 .2rem}
-.edu .logo{width:46px;height:46px}
 .thesis{margin-top:1.1rem;padding:1.1rem 1.2rem;border-radius:14px;background:rgba(124,92,255,.1);border:1px dashed rgba(124,92,255,.5)}
 .thesis .lbl{font:600 11.5px Inter;letter-spacing:2px;text-transform:uppercase;color:var(--a3)}
 .thesis h4{font-size:.98rem;margin:.3rem 0 .5rem;line-height:1.4}
 .thesis p{font-size:13.5px;color:var(--muted)}
+.thesis .more{display:none}.thesis .more.open{display:inline}
+.rm{font-weight:600;white-space:nowrap}
 .thesis .btn{margin-top:.9rem;display:inline-block;padding:7px 16px;font-size:13px}
 
 /* PUBLICATIONS */
@@ -205,21 +210,21 @@ footer{text-align:center;color:var(--muted);font-size:12.5px;margin:4rem 0 2rem}
   <div class="timeline">
 
     <div class="job glass now-job">
-      <div class="jhead"><div class="logo" style="background:#1a5cff">GM</div>
+      <div class="jhead"><div class="logo" style="background:#1a5cff"><img src="images/gm.png" alt="GM logo" onerror="this.remove();this.parentElement.classList.add('fb')" /><span>GM</span></div>
         <div><h3>Machine Learning Engineer</h3><div class="org">General Motors</div>
         <div class="meta">Aug 2026 – Present · Warren, Michigan, US</div></div></div>
       <p>Currently working on Text-to-3D CAD generation.</p>
     </div>
 
     <div class="job glass">
-      <div class="jhead"><div class="logo" style="background:linear-gradient(135deg,#16a34a,#0d9488)">Ag</div>
+      <div class="jhead"><div class="logo" style="background:linear-gradient(135deg,#16a34a,#0d9488)"><img src="images/aghaaz.png" alt="Ag logo" onerror="this.remove();this.parentElement.classList.add('fb')" /><span>Ag</span></div>
         <div><h3>Co-Founder &amp; CEO</h3><div class="org">Aghaaz</div>
         <div class="meta">Aug 2026 – Present</div></div></div>
       <p>Aghaaz is a non-profit initiative by the proud alumni of NUST, which primarily focuses on uplifting the Pakistani youth through education. To be part of this initiative, or for more information, visit us at <a href="https://aghaaz.org">aghaaz.org</a>.</p>
     </div>
 
     <div class="job glass">
-      <div class="jhead"><div class="logo" style="background:#1d4e89">NU</div>
+      <div class="jhead"><div class="logo" style="background:#1d4e89"><img src="images/nustian-usa.png" alt="NU logo" onerror="this.remove();this.parentElement.classList.add('fb')" /><span>NU</span></div>
         <div><h3>NUSTIAN USA</h3><div class="meta">3 yrs 3 mos</div></div></div>
       <div class="sub">
         <div><b>Lead Membership Team</b><div class="meta">Jan 2025 – Present · 1 yr 10 mos</div></div>
@@ -229,7 +234,7 @@ footer{text-align:center;color:var(--muted);font-size:12.5px;margin:4rem 0 2rem}
     </div>
 
     <div class="job glass">
-      <div class="jhead"><div class="logo" style="background:#00274c;color:#ffcb05">UM</div>
+      <div class="jhead"><div class="logo" style="background:#00274c;color:#ffcb05"><img src="images/umich.png" alt="UM logo" onerror="this.remove();this.parentElement.classList.add('fb')" /><span>UM</span></div>
         <div><h3>Graduate Research Assistant</h3><div class="org">University of Michigan</div>
         <div class="meta">Jan 2025 – Apr 2026 · 1 yr 4 mos · Flint, Michigan, US · On-site</div></div></div>
       <p>Worked on Multimodal Physics-Informed Graph Neural Networks for intracranial aneurysm hemodynamics and rupture prediction. Research interests included medical image (DSA, MRI, CTA, Ultrasound) analysis and segmentation, and Multimodal Physics-Informed Graph Neural Networks for aneurysm hemodynamics and rupture prediction.</p>
@@ -237,7 +242,7 @@ footer{text-align:center;color:var(--muted);font-size:12.5px;margin:4rem 0 2rem}
     </div>
 
     <div class="job glass">
-      <div class="jhead"><div class="logo" style="background:#0b3d91">NU</div>
+      <div class="jhead"><div class="logo" style="background:#0b3d91"><img src="images/nust.png" alt="NU logo" onerror="this.remove();this.parentElement.classList.add('fb')" /><span>NU</span></div>
         <div><h3>Research Assistant</h3><div class="org">National University of Sciences and Technology (NUST) · Part-time</div>
         <div class="meta">Jun 2023 – Jul 2023 · 2 mos · Islamabad, Pakistan · On-site</div></div></div>
       <p>Did a comprehensive research on Uncertainty Quantification of Machine Learning Models by using Polynomial Chaos Expansion (PCE).</p>
@@ -245,7 +250,7 @@ footer{text-align:center;color:var(--muted);font-size:12.5px;margin:4rem 0 2rem}
     </div>
 
     <div class="job glass">
-      <div class="jhead"><div class="logo" style="background:#0b3d91">NU</div>
+      <div class="jhead"><div class="logo" style="background:#0b3d91"><img src="images/nust.png" alt="NU logo" onerror="this.remove();this.parentElement.classList.add('fb')" /><span>NU</span></div>
         <div><h3>External Relations Intern</h3><div class="org">National University of Sciences and Technology (NUST) · Part-time</div>
         <div class="meta">May 2021 – Dec 2021 · 8 mos · University Advancement Office, NUST, Islamabad</div></div></div>
       <span class="tag">Microsoft Excel</span> <span class="tag">Communication</span>
@@ -258,7 +263,7 @@ footer{text-align:center;color:var(--muted);font-size:12.5px;margin:4rem 0 2rem}
   <div class="eyebrow">Learning</div><h2>Education</h2>
   <div class="edu">
     <div class="glass">
-      <div class="logo" style="background:#00274c;color:#ffcb05">UM</div>
+      <div class="logo" style="background:#00274c;color:#ffcb05"><img src="images/umich.png" alt="UM logo" onerror="this.remove();this.parentElement.classList.add('fb')" /><span>UM</span></div>
       <h3>MS in Computer Science</h3>
       <div class="org"><a href="https://umich.edu">University of Michigan</a>, USA</div>
       <div class="meta">Completed 2026</div>
@@ -266,12 +271,12 @@ footer{text-align:center;color:var(--muted);font-size:12.5px;margin:4rem 0 2rem}
         <div class="lbl">🎓 Masters Thesis</div>
         <h4>Towards Reliable Intracranial Aneurysm Analysis: Leveraging Foundation Models for Structure-Aware Detection and Segmentation across 3D CTA, ToF-MRA and DSA</h4>
         <div class="meta" style="margin-bottom:.6rem">Advisor: <a href="https://experts.umich.edu/11932-khalid-malik">Prof. Khalid M. Malik</a> · Spring 2026</div>
-        <p>Intracranial aneurysm analysis is essential for preventing rupture and life-threatening brain hemorrhage. This thesis proposes a unified framework for accurate aneurysm detection, localization, and segmentation across CTA, ToF-MRA, and DSA imaging. First, ARAN introduces artery-aware aneurysm detection by combining VISTA3D foundation model features with graph-based vascular geometry, achieving state-of-the-art results on CTA and ToF-MRA datasets. Second, FocusSDF presents a boundary-aware segmentation method using signed distance function supervision to improve lesion boundary precision. It consistently outperforms existing segmentation models across multiple medical imaging tasks. Together, these methods provide a clinically meaningful pipeline for future artery-aware aneurysm rupture risk prediction.</p>
+        <p>Intracranial aneurysm analysis is essential for preventing rupture and life-threatening brain hemorrhage.<span class="more" id="thesisMore"> This thesis proposes a unified framework for accurate aneurysm detection, localization, and segmentation across CTA, ToF-MRA, and DSA imaging. First, ARAN introduces artery-aware aneurysm detection by combining VISTA3D foundation model features with graph-based vascular geometry, achieving state-of-the-art results on CTA and ToF-MRA datasets. Second, FocusSDF presents a boundary-aware segmentation method using signed distance function supervision to improve lesion boundary precision. It consistently outperforms existing segmentation models across multiple medical imaging tasks. Together, these methods provide a clinically meaningful pipeline for future artery-aware aneurysm rupture risk prediction.</span> <a href="#" class="rm" id="thesisBtn" onclick="toggleThesis(event)">Read More...</a></p>
         <a class="btn main" href="MS_Thesis.pdf" target="_blank">📄 Thesis PDF</a>
       </div>
     </div>
     <div class="glass">
-      <div class="logo" style="background:#0b3d91">NU</div>
+      <div class="logo" style="background:#0b3d91"><img src="images/nust.png" alt="NU logo" onerror="this.remove();this.parentElement.classList.add('fb')" /><span>NU</span></div>
       <h3>BS in Mathematics</h3>
       <div class="org"><a href="https://nust.edu.pk">NUST</a>, Islamabad, Pakistan</div>
       <div class="meta">National University of Sciences and Technology</div>
@@ -290,7 +295,7 @@ footer{text-align:center;color:var(--muted);font-size:12.5px;margin:4rem 0 2rem}
       <h3>ARAN: Leveraging Foundation Models for Vasculature-Tree-Informed ARtery-Aware Intracranial ANeurysm Detection in 3D CTA and ToF-MRA</h3>
       <div class="auth"><b>Muzammal Shafique</b>, Nasir Rahim, Muhammad Saad Saeed, Ghaus Malik, Khalid M. Malik</div>
       <div class="venue">IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 2026</div>
-      <button class="pbtn" onclick="toggleAbs(this)">Abstract</button>
+      <button class="pbtn" onclick="toggleAbs(this)">Abstract</button><a class="pbtn" href="https://openaccess.thecvf.com/content/CVPR2026W/PHAROS-AIF-MIH/papers/Shafique_ARAN_Leveraging_Foundation_Models_for_Vasculature-Tree-Informed_ARtery-Aware_Intracranial_ANeurysm_Detection_CVPRW_2026_paper.pdf" target="_blank">PDF</a>
       <div class="abs">Computed Tomography Angiography and Time-of-Flight Magnetic Resonance Angiography serve as clinical standards for non-invasive intracranial aneurysm assessment; however, automated detection and precise localization remain significant challenges. Existing computational methods treat aneurysm detection as a binary detection task. Critically, these approaches typically neglect the identification of the parent artery, a vital parameter for hemodynamic rupture risk assessment and surgical planning. To address these limitations, we present ARAN, an ARtery-aware intracranial ANeurysm detection framework that leverages foundation model representations and vascular geometry priors from CTA and ToF-MRA. Our approach combines a finetuned VISTA3D encoder for volumetric feature extraction with a graph-based geometric branch that models artery specific geometric descriptors, including radius profiles, eccentricity, and Frenet-Serret’s curvature-torsion sequences derived from vessel centerlines. The two branches are fused through Geometry-Gated Cross-Attention, enabling geometry-aware modulation of visual features. Experiments on publicly available datasets demonstrate state of-the-art artery-level classification accuracy of 78.2% on CTA and 85.8% on ToF-MRA, outperforming vision-only and geometry-only baselines.</div>
     </div>
   </article>
@@ -302,7 +307,7 @@ footer{text-align:center;color:var(--muted);font-size:12.5px;margin:4rem 0 2rem}
       <h3>FocusSDF: Boundary-Aware Learning for Medical Image Segmentation via Signed Distance Supervision</h3>
       <div class="auth"><b>Muzammal Shafique</b>, Nasir Rahim, Jamil Ahmad, Mohammad Siadat, Khalid Malik, Ghaus Malik</div>
       <div class="venue">23rd IEEE International Symposium on Biomedical Imaging (ISBI), 2026</div>
-      <button class="pbtn" onclick="toggleAbs(this)">Abstract</button><a class="pbtn" href="https://arxiv.org/pdf/2511.11864">PDF</a>
+      <button class="pbtn" onclick="toggleAbs(this)">Abstract</button><a class="pbtn" href="https://arxiv.org/pdf/2511.11864" target="_blank">PDF</a>
       <div class="abs">Segmentation of medical images constitutes an essential component of medical image analysis, providing the foundation for precise diagnosis and efficient therapeutic interventions in clinical practices. Despite substantial progress, most segmentation models do not explicitly encode boundary information; as a result, making boundary preservation a persistent challenge in medical image segmentation. To address this challenge, we introduce FocusSDF, a novel loss function based on the signed distance functions (SDFs), which redirects the network to concentrate on boundary regions by adaptively assigning higher weights to pixels closer to the lesion or organ boundary, effectively making it boundary aware. To rigorously validate FocusSDF, we perform extensive evaluations against five state-of-the-art medical image segmentation models, including the foundation model MedSAM, using four distance-based loss functions across diverse datasets covering cerebral aneurysm, stroke, liver, and breast tumor segmentation tasks spanning multiple imaging modalities. The experimental results consistently demonstrate the superior performance of FocusSDF over existing distance transform based loss functions.</div>
     </div>
   </article>
@@ -314,7 +319,7 @@ footer{text-align:center;color:var(--muted);font-size:12.5px;margin:4rem 0 2rem}
       <h3>CrossStream-Seg: A Cross-Guided Two-Stream Learning for Boundary-Sensitive ROI Segmentation</h3>
       <div class="auth">Nasir Rahim, <b>Muzammal Shafique</b>, Ghaus Malik, Khalid M. Malik</div>
       <div class="venue">IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 2026</div>
-      <button class="pbtn" onclick="toggleAbs(this)">Abstract</button>
+      <button class="pbtn" onclick="toggleAbs(this)">Abstract</button><a class="pbtn" href="https://openaccess.thecvf.com/content/CVPR2026W/PHAROS-AIF-MIH/papers/Rahim_CrossStream-Seg_A_Cross-Guided_Two-Stream_Learning_for_Boundary-Sensitive_ROI_Segmentation_CVPRW_2026_paper.pdf" target="_blank">PDF</a>
       <div class="abs">Accurate region of interest segmentation in medical images requires both precise local boundary modeling and sufficient global contextual understanding, yet existing architectures often emphasize one at the expense of the other. We propose CrossStream-Seg, a boundary-sensitive ROI encoder built on a cross-guided two-stream encoder module that integrates ResNet-based local representation learning and Vision Mamba-based global contextual modeling. To enable effective interaction between the two streams, we introduce a Cross-Gated Stage Fusion Module, which performs feature alignment, selective cross-stream refinement, and fused multi-scale feature generation throughout the encoder hierarchy. The resulting features are decoded through a shared segmentation pathway and trained with boundary-aware signed-distance supervision to improve geometric consistency near challenging boundaries. The proposed design remains lightweight and structurally simple while explicitly addressing both representation alignment and boundary sensitivity. Experimental results on cerebral aneurysm in DSA, stroke in MRI, and breast tumor in ultrasound imaging modalities show that CrossStream-Seg consistently improves both overlap-based and boundary-aware metrics over counterpart baselines including convolution and transformer-based models. The results indicate that combining structured local-global feature interaction with boundary-aware geometric supervision provides a robust and general framework for medical region of interest segmentation.</div>
     </div>
   </article>
@@ -338,6 +343,11 @@ footer{text-align:center;color:var(--muted);font-size:12.5px;margin:4rem 0 2rem}
 </div>
 
 <script>
+function toggleThesis(e){
+  e.preventDefault();
+  const m=document.getElementById('thesisMore'),o=m.classList.toggle('open');
+  document.getElementById('thesisBtn').textContent=o?'Show Less':'Read More...';
+}
 function toggleAbs(btn){
   const a=btn.parentElement.querySelector('.abs');
   btn.textContent=a.classList.toggle('open')?'Hide':'Abstract';
