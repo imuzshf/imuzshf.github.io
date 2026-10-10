@@ -374,19 +374,7 @@
     </div>
   </div>
 
-  <!-- SUMMARY -->
-  <div class="summary-card">
-    <div class="summary-avatar">
-      <img src="photo.jpg" alt="avatar" onerror="this.style.display='none';" />
-    </div>
-    <div class="summary-text">
-      <h3>Summary</h3>
-      <p>
-        ML Engineer at <strong>General Motors</strong> working on cutting-edge <strong>Text-to-CAD</strong> generation. Completed MS in Computer Science (University of Michigan) and BS in Mathematics (NUST). Formerly a Graduate Research Assistant focused on 3D medical imaging, foundation models, and physics-informed graph learning.
-      </p>
-    </div>
-  </div>
-  <!-- Research Interests (commented out for now)
+  <!-- RESEARCH INTERESTS -->
   <h2 id="interests">Research Interests</h2>
   <div class="interests-wrap">
     <span class="interest-tag">3D Medical Image Analysis</span>
@@ -400,93 +388,42 @@
     <span class="interest-tag">Physics-Informed Neural Networks</span>
     <span class="interest-tag">Graph Neural Networks</span>
   </div>
-  -->
 
-  <div class="news-and-experience">
-    <div>
-      <!-- NEWS -->
-      <h2 id="news">News</h2>
-      <table class="news-table">
-        <tbody>
-          <tr>
-            <td>June 2026</td>
-            <td>Presenting our paper at <strong>CVPR 2026</strong> — awarded a <strong>fully sponsored trip</strong> including paper registration. 🎉</td>
-          </tr>
-          <tr>
-            <td>April 2026</td>
-            <td>Awarded <strong>University of Michigan Conference Travel Award ($5,000)</strong> to attend and present at <strong>ISBI 2026</strong> in London, UK. 🎉</td>
-          </tr>
-          <tr>
-            <td>March 2026</td>
-            <td>Received <strong>$1,000 award</strong> at the <strong>AI in Research Symposium 2026</strong>, one of University of Michigan's most prestigious recognition programs. 🎉</td>
-          </tr>
-        </tbody>
-      </table>
+  <!-- MASTERS THESIS -->
+  <h2 id="thesis">Masters Thesis</h2>
+  <div class="thesis-box">
+    <h3>Towards Reliable Intracranial Aneurysm Analysis: Leveraging Foundation Models for Structure-Aware Detection and Segmentation across 3D CTA, ToF-MRA and DSA</h3>
+    <div class="thesis-meta">
+      MS Thesis &nbsp;·&nbsp; University of Michigan &nbsp;·&nbsp;
+      Advisor: <a href="https://experts.umich.edu/11932-khalid-malik">Prof. Khalid M. Malik</a> &nbsp;·&nbsp; Spring 2026
     </div>
-
-    <aside class="experience-list" aria-labelledby="experience-heading">
-      <h2 id="experience-heading">Experience</h2>
-      <div class="exp-item">
-        <div class="exp-logo">GM</div>
-        <div class="exp-body">
-          <h4>Machine Learning Engineer — General Motors</h4>
-          <div class="meta">Aug 2026 - Present · Warren, Michigan</div>
-          <p>Working on Text-to-3D CAD generation and industrial ML systems for automotive design.</p>
-        </div>
-      </div>
-
-      <div class="exp-item">
-        <div class="exp-logo">A</div>
-        <div class="exp-body">
-          <h4>Co-Founder &amp; CEO — Aghaaz</h4>
-          <div class="meta">Aug 2026 - Present</div>
-          <p>Leading a non-profit focused on uplifting Pakistani youth through education and community programs.</p>
-        </div>
-      </div>
-
-      <div class="exp-item">
-        <div class="exp-logo">NU</div>
-        <div class="exp-body">
-          <h4>Lead — NUSTIAN USA (Membership Team)</h4>
-          <div class="meta">Jan 2025 - Present</div>
-          <p>Coordinated membership initiatives and community outreach for alumni network chapters.</p>
-        </div>
-      </div>
-
-      <div class="exp-item">
-        <div class="exp-logo">UM</div>
-        <div class="exp-body">
-          <h4>Graduate Research Assistant — University of Michigan</h4>
-          <div class="meta">Jan 2025 - Apr 2026 · Flint, MI</div>
-          <p>Worked on Multimodal Physics-Informed Graph Neural Networks for intracranial aneurysm hemodynamics and rupture prediction.</p>
-        </div>
-      </div>
-
-      <div class="exp-item">
-        <div class="exp-logo">NUST</div>
-        <div class="exp-body">
-          <h4>Research Assistant — NUST</h4>
-          <div class="meta">Jun 2023 - Jul 2023</div>
-          <p>Researched uncertainty quantification and polynomial chaos expansions for ML models.</p>
-        </div>
-      </div>
-    </aside>
-  </div>
-
-  <!-- EDUCATION (includes thesis) -->
-  <h2 id="education">Education</h2>
-  <div class="edu-list">
-    <div class="edu-item">
-      <h4>MS in Computer Science — University of Michigan</h4>
-      <div class="meta">Completed Spring 2026</div>
-      <p>Merged thesis: <strong>Towards Reliable Intracranial Aneurysm Analysis</strong> — <a href="MS_Thesis.pdf" target="_blank">Thesis PDF</a></p>
+    <div class="thesis-desc">
+      Intracranial aneurysm analysis is essential for preventing rupture and life-threatening brain hemorrhage. This thesis proposes a unified framework for accurate aneurysm detection, localization, and segmentation across CTA, ToF-MRA, and DSA imaging. First, ARAN introduces artery-aware aneurysm detection by combining VISTA3D foundation model features with graph-based vascular geometry, achieving state-of-the-art results on CTA and ToF-MRA datasets. Second, FocusSDF presents a boundary-aware segmentation method using signed distance function supervision to improve lesion boundary precision. It consistently outperforms existing segmentation models across multiple medical imaging tasks. Together, these methods provide a clinically meaningful pipeline for future artery-aware aneurysm rupture risk prediction.
     </div>
-
-    <div class="edu-item">
-      <h4>BS in Mathematics — National University of Sciences and Technology (NUST), Islamabad</h4>
-      <div class="meta">Completed</div>
+    <div class="thesis-links">
+      <a class="thesis-btn primary" href="MS_Thesis.pdf" target="_blank">📄 Thesis PDF</a>
+      <!-- <a class="thesis-btn" href="https://drive.google.com/drive/u/0/folders/1O56S41gmBVUUPetWx-o0wX8845EKxOeE" target="_blank">🔗 Project Folder</a> -->
     </div>
   </div>
+
+  <!-- NEWS -->
+  <h2 id="news">News</h2>
+  <table class="news-table">
+    <tbody>
+      <tr>
+        <td>June 2026</td>
+        <td>Presenting our paper at <strong>CVPR 2026</strong> — awarded a <strong>fully sponsored trip</strong> including paper registration. 🎉</td>
+      </tr>
+      <tr>
+        <td>April 2026</td>
+        <td>Awarded <strong>University of Michigan Conference Travel Award ($5,000)</strong> to attend and present at <strong>ISBI 2026</strong> in London, UK. 🎉</td>
+      </tr>
+      <tr>
+        <td>March 2026</td>
+        <td>Received <strong>$1,000 award</strong> at the <strong>AI in Research Symposium 2026</strong>, one of University of Michigan's most prestigious recognition programs. 🎉</td>
+      </tr>
+    </tbody>
+  </table>
   <!-- <p class="news-more"><a href="#">View all news</a></p> -->
 
   <!-- PUBLICATIONS -->
