@@ -1,568 +1,359 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Muzammal Shafique</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Georgia&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Muzammal Shafique — ML Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#07090f;--card:rgba(255,255,255,.045);--card-b:rgba(255,255,255,.1);
+  --text:#eef1f7;--muted:#9aa4b8;--a1:#7c5cff;--a2:#22d3ee;--a3:#ff6bb5;
+  --grad:linear-gradient(120deg,var(--a1),var(--a2) 60%,var(--a3));
+}
+body.light{
+  --bg:#f6f7fb;--card:rgba(255,255,255,.8);--card-b:rgba(20,30,60,.1);
+  --text:#12172a;--muted:#59627a;--a1:#5b3df5;--a2:#0891b2;--a3:#d6338a;
+}
+html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.65;font-size:15.5px;overflow-x:hidden}
+a{color:var(--a2);text-decoration:none}a:hover{text-decoration:underline}
+.glow{position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(600px 400px at 12% 8%,rgba(124,92,255,.28),transparent 70%),
+  radial-gradient(550px 420px at 90% 30%,rgba(34,211,238,.18),transparent 70%),
+  radial-gradient(500px 400px at 40% 95%,rgba(255,107,181,.14),transparent 70%)}
+body.light .glow{opacity:.55}
+.wrap{max-width:1040px;margin:0 auto;padding:0 1.5rem}
+h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;line-height:1.2}
 
-    :root {
-      --bg: #fff;
-      --text: #222;
-      --muted: #555;
-      --link: #4a8ab5;
-      --link-hover: #2c6a96;
-      --border: #ddd;
-      --nav-bg: #f8f8f8;
-      --badge-cvpr: #c0392b;
-      --badge-isbi: #2980b9;
-      --badge-media: #27ae60;
-      --badge-tmlr: #8e44ad;
-      --badge-arxiv: #e67e22;
-    }
+/* NAV */
+nav{position:sticky;top:12px;z-index:50;display:flex;justify-content:center;padding:0 1rem}
+.pill{display:flex;gap:.2rem;align-items:center;padding:6px;border-radius:999px;background:var(--card);border:1px solid var(--card-b);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);overflow-x:auto;max-width:100%}
+.pill a{color:var(--muted);font-size:13.5px;padding:6px 14px;border-radius:999px;white-space:nowrap}
+.pill a:hover,.pill a.on{color:var(--text);background:rgba(124,92,255,.22);text-decoration:none}
+.pill button{background:none;border:0;cursor:pointer;font-size:15px;padding:6px 10px;border-radius:999px}
 
-    body {
-      font-family: 'Lato', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      font-size: 15px;
-      line-height: 1.65;
-    }
+/* HERO */
+.hero{display:grid;grid-template-columns:1.4fr 1fr;gap:3rem;align-items:center;padding:4.5rem 0 2rem}
+.now{display:inline-flex;align-items:center;gap:8px;font-size:13px;padding:6px 14px;border-radius:999px;background:var(--card);border:1px solid var(--card-b);margin-bottom:1.4rem}
+.dot{width:8px;height:8px;border-radius:50%;background:#34d399;box-shadow:0 0 0 0 rgba(52,211,153,.7);animation:pulse 2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 9px rgba(52,211,153,0)}100%{box-shadow:0 0 0 0 rgba(52,211,153,0)}}
+.hero h1{font-size:clamp(2.8rem,7vw,5rem);font-weight:700;letter-spacing:-2px}
+.grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;background-size:200% auto;animation:shift 8s linear infinite}
+@keyframes shift{to{background-position:200% center}}
+.role{font-size:1.15rem;color:var(--muted);margin:.8rem 0 1.4rem}
+.role b{color:var(--text);font-weight:600}
+.summary{font-size:1.02rem;color:var(--muted)}
+.summary b{color:var(--text);font-weight:600}
+.summary p+p{margin-top:.9rem}
+.links{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.6rem}
+.btn{padding:9px 18px;border-radius:12px;font-size:14px;font-weight:500;border:1px solid var(--card-b);background:var(--card);color:var(--text)}
+.btn:hover{border-color:var(--a2);text-decoration:none;transform:translateY(-2px)}
+.btn.main{background:var(--grad);border:0;color:#fff}
+.btn{transition:.2s}
+.photo-wrap{position:relative;width:min(300px,80%);aspect-ratio:1;margin:0 auto}
+.photo-wrap::before{content:"";position:absolute;inset:-6px;border-radius:32px;background:var(--grad);animation:spin 10s linear infinite;filter:blur(14px);opacity:.7}
+@keyframes spin{to{transform:rotate(360deg)}}
+.photo-wrap img,.ph{position:relative;width:100%;height:100%;object-fit:cover;border-radius:28px;border:3px solid var(--bg);background:#1b2133}
+.ph{display:none;align-items:center;justify-content:center;font:700 4rem 'Space Grotesk';color:#fff;opacity:.8}
+.chip{position:absolute;padding:6px 12px;border-radius:12px;font-size:12.5px;font-weight:600;background:var(--card);border:1px solid var(--card-b);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);animation:float 5s ease-in-out infinite}
+.chip.c1{top:-14px;right:-18px}.chip.c2{bottom:28px;left:-26px;animation-delay:-2s}.chip.c3{bottom:-14px;right:10px;animation-delay:-3.5s}
+@keyframes float{50%{transform:translateY(-8px)}}
 
-    a { color: var(--link); text-decoration: none; }
-    a:hover { color: var(--link-hover); text-decoration: underline; }
+/* SECTIONS */
+section{padding:3.2rem 0 .5rem}
+.eyebrow{font:600 12px Inter;letter-spacing:2.5px;text-transform:uppercase;color:var(--a2);margin-bottom:.4rem}
+h2{font-size:clamp(1.8rem,4vw,2.5rem);letter-spacing:-1px;margin-bottom:1.6rem}
+.glass{background:var(--card);border:1px solid var(--card-b);border-radius:20px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:.25s}
+.glass:hover{border-color:rgba(124,92,255,.55);transform:translateY(-3px)}
 
-    /* ── NAV ── */
-    nav {
-      background: var(--nav-bg);
-      border-bottom: 1px solid var(--border);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    .nav-inner {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 52px;
-    }
-    .nav-icons { display: flex; gap: 14px; align-items: center; }
-    .nav-icons a { color: var(--muted); font-size: 18px; line-height: 1; }
-    .nav-icons a:hover { color: var(--text); text-decoration: none; }
-    .nav-links { display: flex; gap: 1.5rem; align-items: center; font-size: 14px; }
-    .nav-links a { color: var(--muted); font-weight: 400; }
-    .nav-links a.active { color: var(--link); font-weight: 700; }
-    .nav-links a:hover { color: var(--link); text-decoration: none; }
+/* NEWS */
+.news{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
+.news .glass{padding:1.2rem 1.3rem;font-size:14.5px}
+.news time{display:inline-block;font:700 12px 'Space Grotesk';letter-spacing:1px;text-transform:uppercase;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:.4rem}
 
-    /* ── DARK MODE ── */
-    body.dark {
-      --bg: #1a1a1a;
-      --text: #e8e8e8;
-      --muted: #999;
-      --link: #6ab0d8;
-      --link-hover: #8cc5e8;
-      --border: #333;
-      --nav-bg: #111;
-    }
-    body.dark .pub-btn { background: #2a2a2a; color: var(--text); }
-    body.dark .pub-abstract { background: #222; }
-    body.dark .pub-thumb { background: #2a2a2a; }
-    body.dark .news-table td { border-bottom-color: #2a2a2a; }
-    body.dark .thesis-box { background: #1e2530; border-color: #2a3a4a; }
-    body.dark .thesis-btn { background: #2a2a2a; color: var(--text); }
-    body.dark .award-item { border-bottom-color: #2a2a2a; }
-    body.dark .interest-tag { background: #1e2a38; border-color: #2a4060; color: #8cc5e8; }
+/* EXPERIENCE */
+.timeline{position:relative;padding-left:2.2rem}
+.timeline::before{content:"";position:absolute;left:11px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--a1),var(--a2),var(--a3));opacity:.5;border-radius:2px}
+.job{position:relative;margin-bottom:1.1rem;padding:1.3rem 1.4rem}
+.job::before{content:"";position:absolute;left:calc(-2.2rem + 5px);top:1.7rem;width:14px;height:14px;border-radius:50%;background:var(--bg);border:3px solid var(--a2)}
+.job.now-job::before{border-color:#34d399;box-shadow:0 0 0 5px rgba(52,211,153,.2)}
+.jhead{display:flex;gap:1rem;align-items:flex-start}
+.logo{flex:none;width:52px;height:52px;border-radius:14px;display:grid;place-items:center;font:700 15px 'Space Grotesk';color:#fff}
+.jhead h3{font-size:1.1rem}
+.org{color:var(--text);font-weight:500;font-size:14.5px}
+.meta{color:var(--muted);font-size:13px}
+.job p{margin-top:.7rem;color:var(--muted);font-size:14.5px}
+.tag{display:inline-block;margin-top:.7rem;font-size:12px;padding:3px 11px;border-radius:999px;border:1px solid var(--card-b);color:var(--a2)}
+.sub{margin-top:1rem;padding-left:.9rem;border-left:2px solid var(--card-b)}
+.sub div{padding:.35rem 0}.sub b{font-weight:600;font-size:14.5px}
 
-    .theme-btn {
-      background: none;
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      cursor: pointer;
-      padding: 3px 7px;
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1;
-      display: flex;
-      align-items: center;
-    }
-    .theme-btn:hover { color: var(--text); border-color: var(--muted); }
+/* EDUCATION */
+.edu{display:grid;grid-template-columns:1.3fr 1fr;gap:1rem}
+.edu .glass{padding:1.5rem}
+.edu h3{font-size:1.25rem;margin:.9rem 0 .2rem}
+.edu .logo{width:46px;height:46px}
+.thesis{margin-top:1.1rem;padding:1.1rem 1.2rem;border-radius:14px;background:rgba(124,92,255,.1);border:1px dashed rgba(124,92,255,.5)}
+.thesis .lbl{font:600 11.5px Inter;letter-spacing:2px;text-transform:uppercase;color:var(--a3)}
+.thesis h4{font-size:.98rem;margin:.3rem 0 .5rem;line-height:1.4}
+.thesis p{font-size:13.5px;color:var(--muted)}
+.thesis .btn{margin-top:.9rem;display:inline-block;padding:7px 16px;font-size:13px}
 
-    .icon { width: 20px; height: 20px; fill: currentColor; vertical-align: middle; }
+/* PUBLICATIONS */
+.pub{display:grid;grid-template-columns:200px 1fr;gap:1.4rem;padding:1.2rem;margin-bottom:1.1rem}
+.thumb{height:140px;border-radius:14px;overflow:hidden;background:linear-gradient(135deg,#1e2447,#2a1f4d);display:grid;place-items:center}
+.thumb img{width:100%;height:100%;object-fit:cover}
+.badge{display:inline-block;padding:3px 11px;border-radius:999px;font:700 11.5px 'Space Grotesk';color:#fff;margin-bottom:.5rem}
+.cvpr{background:#e0445a}.isbi{background:#2b7fd4}
+.pub h3{font-size:1.02rem;line-height:1.4;margin-bottom:.35rem}
+.auth{font-size:13.5px;color:var(--muted)}.auth b{color:var(--text)}
+.venue{font-size:13px;font-style:italic;color:var(--muted);margin:.2rem 0 .7rem}
+.pbtn{font:500 12.5px Inter;padding:5px 14px;border-radius:9px;border:1px solid var(--card-b);background:transparent;color:var(--text);cursor:pointer;margin-right:6px;display:inline-block}
+.pbtn:hover{border-color:var(--a2);color:var(--a2);text-decoration:none}
+.abs{display:none;margin-top:.9rem;font-size:13.2px;color:var(--muted);padding:.8rem 1rem;border-left:3px solid var(--a1);background:rgba(124,92,255,.07);border-radius:0 10px 10px 0}
+.abs.open{display:block}
 
-    /* ── LAYOUT ── */
-    .container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 2.5rem 2rem 4rem;
-    }
+/* AWARDS */
+.awards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1rem}
+.award{padding:1.2rem 1.3rem;font-size:14px;color:var(--muted)}
+.award b{display:block;color:var(--text);font:600 15px 'Space Grotesk';margin:.5rem 0 .3rem}
+.award .em{font-size:1.5rem}
 
-    /* ── HERO ── */
-    .hero-name { font-size: 2.4rem; font-weight: 300; letter-spacing: -0.5px; margin-bottom: 0.25rem; }
-    .hero-name strong { font-weight: 700; }
-    .hero-subtitle { color: var(--muted); font-size: 14px; margin-bottom: 2rem; }
-    .hero-subtitle a { color: var(--link); }
+footer{text-align:center;color:var(--muted);font-size:12.5px;margin:4rem 0 2rem}
 
-    .hero-body {
-      display: grid;
-      grid-template-columns: 1fr 200px;
-      gap: 2.5rem;
-      align-items: start;
-      margin-bottom: 1.5rem;
-    }
-    .hero-text p { margin-bottom: 1rem; }
-    .hero-text p:last-child { margin-bottom: 0; }
+/* REVEAL */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
+.rv.in{opacity:1;transform:none}
 
-    .profile-col { text-align: center; }
-    .profile-photo { width: 220px; height: 220px; border-radius: 4px; object-fit: cover; background: #d0d0d0; display: block; }
-    .profile-placeholder {
-      width: 200px; height: 200px; border-radius: 4px;
-      background: linear-gradient(135deg, #c8d6e5, #a8b8c8);
-      display: flex; align-items: center; justify-content: center;
-    }
-    .profile-placeholder svg { width: 80px; height: 80px; fill: #fff; opacity: 0.6; }
-    .profile-location { font-size: 13px; color: var(--muted); margin-top: 0.5rem; text-align: center; width: 220px; margin-left: auto; margin-right: auto; }
-
-    .social-links { margin-top: 1.5rem; font-size: 14px; }
-    .social-links .sep { color: var(--muted); margin: 0 4px; }
-
-    /* ── INTERESTS ── */
-    .interests-wrap { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 0.8rem; }
-    .interest-tag {
-      display: inline-block;
-      padding: 4px 12px;
-      border-radius: 20px;
-      border: 1px solid #c0d8ec;
-      background: #eef5fb;
-      color: #2c6a96;
-      font-size: 13px;
-    }
-
-    /* ── SECTION HEADINGS ── */
-    h2 {
-      font-size: 1.9rem;
-      font-weight: 300;
-      margin: 2.5rem 0 1.2rem;
-      padding-bottom: 0.3rem;
-      border-bottom: 1px solid var(--border);
-    }
-
-    /* ── THESIS ── */
-    .thesis-box {
-      background: #f4f8fc;
-      border: 1px solid #cde0f0;
-      border-radius: 6px;
-      padding: 1.4rem 1.6rem;
-      margin-bottom: 1rem;
-    }
-    .thesis-box h3 { font-size: 15px; font-weight: 700; line-height: 1.45; margin-bottom: 0.5rem; }
-    .thesis-meta { font-size: 13.5px; color: var(--muted); margin-bottom: 0.8rem; }
-    .thesis-desc { font-size: 14px; line-height: 1.6; margin-bottom: 0.9rem; }
-    .thesis-links { display: flex; flex-wrap: wrap; gap: 8px; }
-    .thesis-btn {
-      display: inline-block;
-      padding: 4px 14px;
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      font-size: 12.5px;
-      color: var(--text);
-      background: #fff;
-      text-decoration: none;
-      transition: background 0.15s;
-    }
-    .thesis-btn:hover { background: #eef3ff; color: var(--link); text-decoration: none; }
-    .thesis-btn.primary { background: var(--link); color: #fff; border-color: var(--link); }
-    .thesis-btn.primary:hover { background: var(--link-hover); border-color: var(--link-hover); color: #fff; }
-
-    /* ── AWARDS ── */
-    .award-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.9rem;
-      padding: 0.65rem 0;
-      border-bottom: 1px solid #f0f0f0;
-      font-size: 14px;
-    }
-    .award-item:last-child { border-bottom: none; }
-    .award-icon { flex-shrink: 0; width: 20px; height: 20px; margin-top: 2px; fill: #d4a017; }
-    .award-text { line-height: 1.55; }
-
-    /* ── NEWS ── */
-    .news-table { width: 100%; border-collapse: collapse; font-size: 14px; }
-    .news-table td { padding: 0.45rem 0.5rem; vertical-align: top; border-bottom: 1px solid #f0f0f0; }
-    .news-table td:first-child { white-space: nowrap; font-weight: 700; width: 110px; padding-right: 1rem; }
-    .news-more { font-size: 14px; margin-top: 0.7rem; }
-
-    /* ── PUBLICATIONS ── */
-    .year-heading { font-size: 1.3rem; font-weight: 700; margin: 2rem 0 1rem; }
-    .pub-list { list-style: none; }
-    .pub-item { display: grid; grid-template-columns: 160px 1fr; gap: 1.2rem; margin-bottom: 2rem; }
-    .pub-thumb {
-      width: 160px; height: 110px; object-fit: cover; border-radius: 3px;
-      background: #e8edf2; display: flex; align-items: center; justify-content: center;
-    }
-    .pub-thumb svg { width: 48px; height: 48px; fill: #aab; }
-    .pub-title { font-weight: 700; font-size: 14.5px; margin-bottom: 0.25rem; line-height: 1.4; }
-    .pub-authors { font-size: 13.5px; color: var(--muted); margin-bottom: 0.2rem; }
-    .pub-venue { font-style: italic; font-size: 13.5px; margin-bottom: 0.4rem; }
-    .pub-links { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 0.4rem; }
-    .pub-btn {
-      display: inline-block; padding: 2px 10px; border: 1px solid var(--border);
-      border-radius: 3px; font-size: 12px; color: var(--text); background: #fafafa;
-      cursor: pointer; transition: background 0.15s;
-    }
-    .pub-btn:hover { background: #eef; color: var(--link); text-decoration: none; }
-    .pub-badge { display: inline-block; padding: 2px 8px; border-radius: 3px; font-size: 11px; font-weight: 700; color: #fff; }
-    .badge-cvpr { background: var(--badge-cvpr); }
-    .badge-isbi { background: var(--badge-isbi); }
-    .badge-media { background: var(--badge-media); }
-    .badge-tmlr { background: var(--badge-tmlr); }
-    .badge-arxiv { background: var(--badge-arxiv); }
-
-    .pub-abstract {
-      font-size: 13px; color: var(--muted); margin-top: 0.5rem; display: none;
-      background: #f7f9fb; border-left: 3px solid var(--link);
-      padding: 0.6rem 0.8rem; border-radius: 0 3px 3px 0;
-    }
-    .pub-abstract.open { display: block; }
-
-    /* ── FOOTER ── */
-    footer {
-      text-align: center; font-size: 12px; color: var(--muted);
-      margin-top: 4rem; padding-top: 1.5rem; border-top: 1px solid var(--border);
-    }
-
-    @media (max-width: 640px) {
-      .hero-body { grid-template-columns: 1fr; }
-      .profile-col { order: -1; }
-      .profile-placeholder, .profile-photo { width: 140px; height: 140px; margin: 0 auto; }
-      .pub-item { grid-template-columns: 1fr; }
-      .pub-thumb { width: 100%; height: 140px; }
-    }
-
-    /* ── NEW: Summary / Experience / Education styles ── */
-    .summary-card {
-      display: flex; gap: 18px; align-items: center;
-      background: linear-gradient(135deg, #f0f8ff, #eef6ff);
-      border: 1px solid #dbeaf8; padding: 18px; border-radius: 10px;
-      box-shadow: 0 6px 18px rgba(30,50,80,0.06); margin-bottom: 1.4rem;
-    }
-    .summary-avatar { width: 84px; height: 84px; border-radius: 10px; background: #d8e8f8; flex-shrink:0; display:flex; align-items:center; justify-content:center; }
-    .summary-avatar img { width:72px; height:72px; object-fit:cover; border-radius:6px; }
-    .summary-text h3 { margin-bottom:6px; font-size:1.05rem; }
-    .summary-text p { color: var(--muted); font-size:14px; }
-
-    .news-and-experience { display: grid; grid-template-columns: 1fr 360px; gap: 1.4rem; align-items:start; }
-    @media (max-width: 900px) { .news-and-experience { grid-template-columns: 1fr; } }
-
-    .experience-list { background: #fff; border:1px solid var(--border); padding: 12px; border-radius:8px; box-shadow: 0 6px 18px rgba(20,30,50,0.03); }
-    .exp-item { display:flex; gap:12px; padding:12px 8px; border-bottom:1px solid #f3f5f7; }
-    .exp-item:last-child { border-bottom: none; }
-    .exp-logo { width:52px; height:52px; border-radius:8px; background:#eef6fb; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
-    .exp-body h4 { margin-bottom:4px; font-size:14px; }
-    .exp-body .meta { color:var(--muted); font-size:13px; margin-bottom:6px; }
-    .exp-body p { font-size:13.5px; color:var(--text); line-height:1.45; }
-
-    .edu-list { display:flex; flex-direction:column; gap:10px; }
-    .edu-item { background:#f7fbff; border:1px solid #e0efff; padding:10px 12px; border-radius:8px; }
-    .edu-item h4 { margin-bottom:4px; }
-  </style>
+@media(max-width:780px){
+  .hero{grid-template-columns:1fr;padding-top:3rem}.photo-wrap{order:-1;width:200px}
+  .edu{grid-template-columns:1fr}.pub{grid-template-columns:1fr}.thumb{height:160px}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
 </head>
 <body>
+<div class="glow"></div>
 
-<!-- NAV -->
-<nav>
-  <div class="nav-inner">
-    <div class="nav-icons">
-      <a href="mailto:muzshf@gmail.com" title="Email">
-        <svg class="icon" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
-      </a>
-      <a href="https://scholar.google.ca/citations?hl=en&pli=1&user=R5tw95cAAAAJ" title="Google Scholar">
-        <svg class="icon" viewBox="0 0 24 24"><path d="M5.242 13.769 0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/></svg>
-      </a>
-      <a href="https://github.com/muzammalshafique" title="GitHub">
-        <svg class="icon" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
-      </a>
-      <a href="https://www.linkedin.com/in/imuzammil/" title="LinkedIn">
-        <svg class="icon" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zm-8.5 12.5V10h-2v5.5h2zm-1-6.3a1.2 1.2 0 1 0 0-2.4 1.2 1.2 0 0 0 0 2.4zM17 15.5v-3.2c0-1.7-.9-2.5-2.2-2.5-1 0-1.5.6-1.8 1V10h-2v5.5h2v-3c0-.9.4-1.4 1.1-1.4.7 0 1 .5 1 1.4v3h1.9z"/></svg>
-      </a>
+<nav><div class="pill">
+  <a href="#top" class="on">Home</a><a href="#news">News</a><a href="#experience">Experience</a>
+  <a href="#education">Education</a><a href="#publications">Publications</a><a href="#awards">Awards</a>
+  <a href="resume.pdf" target="_blank">CV</a>
+  <button id="themeBtn" title="Toggle theme">🌙</button>
+</div></nav>
+
+<div class="wrap" id="top">
+
+<!-- HERO / SUMMARY -->
+<header class="hero">
+  <div>
+    <div class="now"><span class="dot"></span> Now building <b>Text → 3D CAD</b> at General Motors</div>
+    <h1><span class="grad">Muzammal</span><br>Shafique</h1>
+    <p class="role"><b>Machine Learning Engineer</b> @ <a href="https://gm.com">General Motors</a></p>
+    <div class="summary">
+      <p>I'm an <b>ML Engineer at General Motors</b>, working on <b>Text-to-3D CAD generation</b>. I recently completed my <b>MS in Computer Science at the University of Michigan</b>, where I did research as a Graduate Research Assistant in the <b>SMILES Lab</b> under <a href="https://experts.umich.edu/11932-khalid-malik">Prof. Khalid M. Malik</a>.</p>
+      <p>My research focused on <b>3D medical image analysis</b>, <b>vision foundation models</b>, and <b>physics-informed learning</b> for intracranial aneurysm detection, segmentation, and hemodynamics, with work published at <b>CVPR</b> and <b>ISBI</b>. Before that, I earned my <b>BS in Mathematics</b> from <b>NUST, Islamabad</b>.</p>
+      <p>Outside of work, I co-founded <a href="https://aghaaz.org">Aghaaz</a>, a non-profit uplifting Pakistani youth through education.</p>
     </div>
-    <div class="nav-links">
-      <a href="#about" class="active">About</a>
-      <a href="#thesis">MS Thesis</a>
-      <a href="#publications">Publications</a>
-      <a href="#awards">Awards</a>
-      <a href="resume.pdf" target="_blank">CV</a>
-      <button class="theme-btn" id="themeBtn" title="Toggle dark/light mode">🌙</button>
-    </div>
-  </div>
-</nav>
-
-<!-- MAIN -->
-<div class="container" id="about">
-
-  <h1 class="hero-name"><strong>Muzammal</strong> Shafique</h1>
-  <p class="hero-subtitle">
-    ML Engineer at <a href="https://gm.com">General Motors</a> &nbsp;·&nbsp;
-    MS in Computer Science, <a href="https://umich.edu">University of Michigan</a>, USA &nbsp;·&nbsp;
-    BS in Mathematics from <a href="https://nust.edu.pk">NUST, Islamabad</a>, Pakistan
-  </p>
-
-  <div class="hero-body">
-    <div class="hero-text">
-      <p>
-        Hi, I am <strong>Muzammal Shafique</strong>, an MS student in <strong>Computer Science</strong> at the
-        <strong>University of Michigan</strong>. I am a Graduate Research Assistant at the <strong>SMILES Lab</strong>,
-        supervised by <a href="https://experts.umich.edu/11932-khalid-malik">Prof. Khalid M. Malik</a>.
-      </p>
-      <p>
-        Previously, I attained my <strong>BS in Mathematics</strong> from the
-        <strong>National University of Sciences and Technology (NUST), Islamabad, Pakistan</strong>.
-      </p>
-      <p>
-        My broader research interests lies at the intersection of <strong>3D medical image analysis</strong>,
-        <strong>computer vision</strong>, <strong>vision foundation models</strong> and Phyiscs Informed Learning.
-        I focus on developing <strong>data-efficient and generalizable frameworks</strong> that leverage
-        <strong>VLMs and LLMs for medical imaging</strong>, with a particular emphasis on
-        <strong>multimodal learning</strong> and <strong>cerebrovascular and cardiovascular
-        blood hemodynamics prediction</strong>.
-      </p>
-      <p>
-        My active research interests centers on <strong>intracranial aneurysm analysis</strong> — combining
-        <strong>foundation models</strong> to enable structure-aware detection, segmentation, and rupture risk prediction
-        across <strong>3D CTA, ToF-MRA, and DSA</strong> modalities <strong>AND</strong> Multimodal Physics-Informed Graph Neural Networks for Intracranial Aneurysm Hemodynamics and Rupture Risk Prediction. <a href="https://drive.google.com/file/d/1e3cZPx_UjDeQLZNot17_SwN3glpKVFDt/view?usp=sharing" target="_blank">View project →</a>
-      </p>
-
-      <!-- <p style="font-size:14px; color:var(--muted); margin-top:0.8rem;">
-      <strong style="color:var(--text);">Currently working on:</strong>
-      Multimodal Physics-Informed Graph Neural Networks for Intracranial Aneurysm Hemodynamics and Rupture Risk Prediction.
-      &nbsp;<a href="https://drive.google.com/file/d/1e3cZPx_UjDeQLZNot17_SwN3glpKVFDt/view?usp=sharing" target="_blank">View project →</a>
-      </p> -->
-      
-      <p>
-        My work has been published at venues including <strong>CVPR</strong> and <strong>ISBI</strong>,
-        and has been supported by multiple competitive awards including the
-        <strong>University of Michigan Conference Travel Award</strong> and the
-        <strong>Prime Minister's Ehsaas Undergraduate Scholarship</strong>.
-      </p>
-
-      <div class="social-links">
-        <a href="mailto:muzshf@gmail.com">Email</a>
-        <span class="sep">/</span>
-        <a href="https://scholar.google.ca/citations?hl=en&pli=1&user=R5tw95cAAAAJ">Google Scholar</a>
-        <span class="sep">/</span>
-        <a href="https://github.com/muzammalshafique">GitHub</a>
-        <span class="sep">/</span>
-        <a href="https://www.linkedin.com/in/imuzammil/">LinkedIn</a>
-        <span class="sep">/</span>
-        <a href="resume.pdf" target="_blank">CV</a>
-      </div>
-    </div>
-
-    <div class="profile-col">
-      <img src="photo.jpg" alt="Muzammal Shafique" class="profile-photo"
-        onerror="this.style.display='none';document.getElementById('photo-fallback').style.display='flex';" />
-      <div class="profile-placeholder" id="photo-fallback" style="display:none;">
-        <svg viewBox="0 0 64 64"><circle cx="32" cy="20" r="12"/><path d="M8 56c0-13.255 10.745-24 24-24s24 10.745 24 24"/></svg>
-      </div>
-      <p class="profile-location">📍Greenwich Maritime, London, UK</p>
+    <div class="links">
+      <a class="btn main" href="mailto:muzshf@gmail.com">✉ Email me</a>
+      <a class="btn" href="https://www.linkedin.com/in/imuzammil/">LinkedIn</a>
+      <a class="btn" href="https://github.com/muzammalshafique">GitHub</a>
+      <a class="btn" href="https://scholar.google.ca/citations?hl=en&pli=1&user=R5tw95cAAAAJ">Scholar</a>
+      <a class="btn" href="resume.pdf" target="_blank">CV</a>
     </div>
   </div>
-
-  <!-- RESEARCH INTERESTS -->
-  <h2 id="interests">Research Interests</h2>
-  <div class="interests-wrap">
-    <span class="interest-tag">3D Medical Image Analysis</span>
-    <span class="interest-tag">Computer Vision</span>
-    <span class="interest-tag">Vision Foundation Models</span>
-    <span class="interest-tag">VLMs &amp; LLMs in Medical Imaging</span>
-    <span class="interest-tag">Multimodal Learning</span>
-    <span class="interest-tag">Cerebrovascular Hemodynamics</span>
-    <span class="interest-tag">Cardiovascular Blood Flow Prediction</span>
-    <span class="interest-tag">Intracranial Aneurysm Analysis</span>
-    <span class="interest-tag">Physics-Informed Neural Networks</span>
-    <span class="interest-tag">Graph Neural Networks</span>
+  <div class="photo-wrap">
+    <img src="photo.jpg" alt="Muzammal Shafique" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+    <div class="ph">MS</div>
+    <span class="chip c1">🚗 GM</span><span class="chip c2">🎓 UMich</span><span class="chip c3">📄 CVPR · ISBI</span>
   </div>
+</header>
 
-  <!-- MASTERS THESIS -->
-  <h2 id="thesis">Masters Thesis</h2>
-  <div class="thesis-box">
-    <h3>Towards Reliable Intracranial Aneurysm Analysis: Leveraging Foundation Models for Structure-Aware Detection and Segmentation across 3D CTA, ToF-MRA and DSA</h3>
-    <div class="thesis-meta">
-      MS Thesis &nbsp;·&nbsp; University of Michigan &nbsp;·&nbsp;
-      Advisor: <a href="https://experts.umich.edu/11932-khalid-malik">Prof. Khalid M. Malik</a> &nbsp;·&nbsp; Spring 2026
+<!-- RESEARCH INTERESTS (commented out for now)
+<h2 id="interests">Research Interests</h2>
+<div class="interests-wrap">
+  <span class="interest-tag">3D Medical Image Analysis</span>
+  <span class="interest-tag">Computer Vision</span>
+  <span class="interest-tag">Vision Foundation Models</span>
+  <span class="interest-tag">VLMs &amp; LLMs in Medical Imaging</span>
+  <span class="interest-tag">Multimodal Learning</span>
+  <span class="interest-tag">Cerebrovascular Hemodynamics</span>
+  <span class="interest-tag">Cardiovascular Blood Flow Prediction</span>
+  <span class="interest-tag">Intracranial Aneurysm Analysis</span>
+  <span class="interest-tag">Physics-Informed Neural Networks</span>
+  <span class="interest-tag">Graph Neural Networks</span>
+</div>
+-->
+
+<!-- NEWS -->
+<section id="news" class="rv">
+  <div class="eyebrow">Latest</div><h2>News</h2>
+  <div class="news">
+    <div class="glass"><time>June 2026</time><br>Presenting our paper at <b>CVPR 2026</b>, with a <b>fully sponsored trip</b> including paper registration. 🎉</div>
+    <div class="glass"><time>April 2026</time><br>Awarded the <b>University of Michigan Conference Travel Award ($5,000)</b> to present at <b>ISBI 2026</b> in London, UK. 🎉</div>
+    <div class="glass"><time>March 2026</time><br>Received a <b>$1,000 award</b> at the <b>AI in Research Symposium 2026</b>, one of Michigan's most prestigious research recognitions. 🎉</div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="rv">
+  <div class="eyebrow">Career</div><h2>Experience</h2>
+  <div class="timeline">
+
+    <div class="job glass now-job">
+      <div class="jhead"><div class="logo" style="background:#1a5cff">GM</div>
+        <div><h3>Machine Learning Engineer</h3><div class="org">General Motors</div>
+        <div class="meta">Aug 2026 – Present · Warren, Michigan, US</div></div></div>
+      <p>Currently working on Text-to-3D CAD generation.</p>
     </div>
-    <div class="thesis-desc">
-      Intracranial aneurysm analysis is essential for preventing rupture and life-threatening brain hemorrhage. This thesis proposes a unified framework for accurate aneurysm detection, localization, and segmentation across CTA, ToF-MRA, and DSA imaging. First, ARAN introduces artery-aware aneurysm detection by combining VISTA3D foundation model features with graph-based vascular geometry, achieving state-of-the-art results on CTA and ToF-MRA datasets. Second, FocusSDF presents a boundary-aware segmentation method using signed distance function supervision to improve lesion boundary precision. It consistently outperforms existing segmentation models across multiple medical imaging tasks. Together, these methods provide a clinically meaningful pipeline for future artery-aware aneurysm rupture risk prediction.
+
+    <div class="job glass">
+      <div class="jhead"><div class="logo" style="background:linear-gradient(135deg,#16a34a,#0d9488)">Ag</div>
+        <div><h3>Co-Founder &amp; CEO</h3><div class="org">Aghaaz</div>
+        <div class="meta">Aug 2026 – Present</div></div></div>
+      <p>Aghaaz is a non-profit initiative by the proud alumni of NUST, which primarily focuses on uplifting the Pakistani youth through education. To be part of this initiative, or for more information, visit us at <a href="https://aghaaz.org">aghaaz.org</a>.</p>
     </div>
-    <div class="thesis-links">
-      <a class="thesis-btn primary" href="MS_Thesis.pdf" target="_blank">📄 Thesis PDF</a>
-      <!-- <a class="thesis-btn" href="https://drive.google.com/drive/u/0/folders/1O56S41gmBVUUPetWx-o0wX8845EKxOeE" target="_blank">🔗 Project Folder</a> -->
+
+    <div class="job glass">
+      <div class="jhead"><div class="logo" style="background:#1d4e89">NU</div>
+        <div><h3>NUSTIAN USA</h3><div class="meta">3 yrs 3 mos</div></div></div>
+      <div class="sub">
+        <div><b>Lead Membership Team</b><div class="meta">Jan 2025 – Present · 1 yr 10 mos</div></div>
+        <div><b>Data Analyst Consultant</b><div class="meta">Apr 2024 – Dec 2024 · 9 mos</div></div>
+        <div><b>Data Engineer</b><div class="meta">Aug 2023 – Mar 2024 · 8 mos</div></div>
+      </div>
+    </div>
+
+    <div class="job glass">
+      <div class="jhead"><div class="logo" style="background:#00274c;color:#ffcb05">UM</div>
+        <div><h3>Graduate Research Assistant</h3><div class="org">University of Michigan</div>
+        <div class="meta">Jan 2025 – Apr 2026 · 1 yr 4 mos · Flint, Michigan, US · On-site</div></div></div>
+      <p>Worked on Multimodal Physics-Informed Graph Neural Networks for intracranial aneurysm hemodynamics and rupture prediction. Research interests included medical image (DSA, MRI, CTA, Ultrasound) analysis and segmentation, and Multimodal Physics-Informed Graph Neural Networks for aneurysm hemodynamics and rupture prediction.</p>
+      <span class="tag">Medical Image Analysis</span> <span class="tag">Physics-Informed Graph Neural Networks</span>
+    </div>
+
+    <div class="job glass">
+      <div class="jhead"><div class="logo" style="background:#0b3d91">NU</div>
+        <div><h3>Research Assistant</h3><div class="org">National University of Sciences and Technology (NUST) · Part-time</div>
+        <div class="meta">Jun 2023 – Jul 2023 · 2 mos · Islamabad, Pakistan · On-site</div></div></div>
+      <p>Did a comprehensive research on Uncertainty Quantification of Machine Learning Models by using Polynomial Chaos Expansion (PCE).</p>
+      <span class="tag">Uncertainty Quantification</span> <span class="tag">Machine Learning</span>
+    </div>
+
+    <div class="job glass">
+      <div class="jhead"><div class="logo" style="background:#0b3d91">NU</div>
+        <div><h3>External Relations Intern</h3><div class="org">National University of Sciences and Technology (NUST) · Part-time</div>
+        <div class="meta">May 2021 – Dec 2021 · 8 mos · University Advancement Office, NUST, Islamabad</div></div></div>
+      <span class="tag">Microsoft Excel</span> <span class="tag">Communication</span>
     </div>
   </div>
+</section>
 
-  <!-- NEWS -->
-  <h2 id="news">News</h2>
-  <table class="news-table">
-    <tbody>
-      <tr>
-        <td>June 2026</td>
-        <td>Presenting our paper at <strong>CVPR 2026</strong> — awarded a <strong>fully sponsored trip</strong> including paper registration. 🎉</td>
-      </tr>
-      <tr>
-        <td>April 2026</td>
-        <td>Awarded <strong>University of Michigan Conference Travel Award ($5,000)</strong> to attend and present at <strong>ISBI 2026</strong> in London, UK. 🎉</td>
-      </tr>
-      <tr>
-        <td>March 2026</td>
-        <td>Received <strong>$1,000 award</strong> at the <strong>AI in Research Symposium 2026</strong>, one of University of Michigan's most prestigious recognition programs. 🎉</td>
-      </tr>
-    </tbody>
-  </table>
-  <!-- <p class="news-more"><a href="#">View all news</a></p> -->
-
-  <!-- PUBLICATIONS -->
-  <h2 id="publications">Selected Publications</h2>
-  <!-- <p style="font-size:13px;color:var(--muted);margin-bottom:1rem;">* denotes joint first authors</p> -->
-
-  <div class="year-heading">2026</div>
-  <ol class="pub-list">
-
-    <li class="pub-item">
-      <div class="pub-thumb">
-        <img src="cvpr2026_ARAN.png" alt="CVPR 2026 paper thumbnail" style="width:160px;height:110px;object-fit:cover;border-radius:3px;" />
+<!-- EDUCATION -->
+<section id="education" class="rv">
+  <div class="eyebrow">Learning</div><h2>Education</h2>
+  <div class="edu">
+    <div class="glass">
+      <div class="logo" style="background:#00274c;color:#ffcb05">UM</div>
+      <h3>MS in Computer Science</h3>
+      <div class="org"><a href="https://umich.edu">University of Michigan</a>, USA</div>
+      <div class="meta">Completed 2026</div>
+      <div class="thesis">
+        <div class="lbl">🎓 Masters Thesis</div>
+        <h4>Towards Reliable Intracranial Aneurysm Analysis: Leveraging Foundation Models for Structure-Aware Detection and Segmentation across 3D CTA, ToF-MRA and DSA</h4>
+        <div class="meta" style="margin-bottom:.6rem">Advisor: <a href="https://experts.umich.edu/11932-khalid-malik">Prof. Khalid M. Malik</a> · Spring 2026</div>
+        <p>Intracranial aneurysm analysis is essential for preventing rupture and life-threatening brain hemorrhage. This thesis proposes a unified framework for accurate aneurysm detection, localization, and segmentation across CTA, ToF-MRA, and DSA imaging. First, ARAN introduces artery-aware aneurysm detection by combining VISTA3D foundation model features with graph-based vascular geometry, achieving state-of-the-art results on CTA and ToF-MRA datasets. Second, FocusSDF presents a boundary-aware segmentation method using signed distance function supervision to improve lesion boundary precision. It consistently outperforms existing segmentation models across multiple medical imaging tasks. Together, these methods provide a clinically meaningful pipeline for future artery-aware aneurysm rupture risk prediction.</p>
+        <a class="btn main" href="MS_Thesis.pdf" target="_blank">📄 Thesis PDF</a>
       </div>
-      <div class="pub-info">
-        <div class="pub-title"><strong>ARAN</strong>: Leveraging Foundation Models for Vasculature-Tree-Informed ARtery-Aware Intracranial ANeurysm Detection in 3D CTA and ToF-MRA</div>
-        <div class="pub-authors"><strong>Muzammal Shafique</strong>, Nasir Rahim, Muhammad Saad Saeed, Ghaus Malik, Khalid M. Malik</div>
-        <div class="pub-venue">In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 2026</div>
-        <div class="pub-links">
-          <span class="pub-badge badge-cvpr">CVPR 2026</span>
-          <button class="pub-btn" onclick="toggleAbs(this)">Abstract</button>
-          <!-- <a class="pub-btn" href="#">PDF</a> -->
-          <!-- <a class="pub-btn" href="#">Code</a> -->
-        </div>
-        <div class="pub-abstract">Computed Tomography Angiography and Time-of-Flight Magnetic Resonance Angiography serve as clinical standards for non-invasive intracranial aneurysm assessment; however, automated detection and precise localization remain significant challenges. Existing computational methods treat aneurysm detection as a binary detection task. Critically, these approaches typically neglect the identification of the parent artery, a vital parameter for hemodynamic rupture risk assessment and surgical planning. To address these limitations, we present ARAN, an ARtery-aware intracranial ANeurysm detection framework that leverages foundation model representations and vascular geometry priors from CTA and ToF-MRA. Our approach combines a finetuned VISTA3D encoder for volumetric feature extraction with a graph-based geometric branch that models artery specific geometric descriptors, including radius profiles, eccentricity, and Frenet-Serret’s curvature-torsion sequences derived from vessel centerlines. The two branches are fused through Geometry-Gated Cross-Attention, enabling geometry-aware modulation of visual features. Experiments on publicly available datasets demonstrate state of-the-art artery-level classification accuracy of 78.2% on CTA and 85.8% on ToF-MRA, outperforming vision-only and geometry-only baselines.</div>
-      </div>
-    </li>
-
-    <li class="pub-item">
-      <div class="pub-thumb">
-        <img src="isbi2026.png" alt="CVPR 2026 paper thumbnail" style="width:160px;height:110px;object-fit:cover;border-radius:3px;" />
-      </div>
-      <div class="pub-info">
-        <div class="pub-title"><strong>FocusSDF</strong>: Boundary-Aware Learning for Medical Image Segmentation via Signed Distance Supervision</div>
-        <div class="pub-authors"><strong>Muzammal Shafique</strong>, Nasir Rahim, Jamil Ahmad, Mohammad Siadat, Khalid Malik, Ghaus Malik</div>
-        <div class="pub-venue">In Proceedings of the 23rd IEEE International Symposium on Biomedical Imaging (ISBI), 2026</div>
-        <div class="pub-links">
-          <span class="pub-badge badge-isbi">ISBI 2026</span>
-          <button class="pub-btn" onclick="toggleAbs(this)">Abstract</button>
-          <a class="pub-btn" href="https://arxiv.org/pdf/2511.11864">PDF</a>
-          <!-- <a class="pub-btn" href="#">Code</a> -->
-        </div>
-        <div class="pub-abstract">Segmentation of medical images constitutes an essential component of medical image analysis, providing the foundation for precise diagnosis and efficient therapeutic interventions in clinical practices. Despite substantial progress, most segmentation models do not explicitly encode boundary information; as a result, making boundary preservation a persistent challenge in medical image segmentation. To address this challenge, we introduce FocusSDF, a novel loss function based on the signed distance functions (SDFs), which redirects the network to concentrate on boundary regions by adaptively assigning higher weights to pixels closer to the lesion or organ boundary, effectively making it boundary aware. To rigorously validate FocusSDF, we perform extensive evaluations against five state-of-the-art medical image segmentation models, including the foundation model MedSAM, using four distance-based loss functions across diverse datasets covering cerebral aneurysm, stroke, liver, and breast tumor segmentation tasks spanning multiple imaging modalities. The experimental results consistently demonstrate the superior performance of FocusSDF over existing distance transform based loss functions.</div>
-      </div>
-    </li>
-
-    <li class="pub-item">
-      <div class="pub-thumb">
-        <img src="cvpr2026_CrossStream-Seg.png" alt="CVPR 2026 paper thumbnail" style="width:160px;height:110px;object-fit:cover;border-radius:3px;" />
-      </div>
-      <div class="pub-info">
-        <div class="pub-title"><strong>CrossStream-Seg</strong>: A Cross-Guided Two-Stream Learning for Boundary-Sensitive ROI Segmentation</div>
-        <div class="pub-authors"> Nasir Rahim, <strong>Muzammal Shafique</strong>, Ghaus Malik, Khalid M. Malik</div>
-        <div class="pub-venue">In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 2026</div>
-        <div class="pub-links">
-          <span class="pub-badge badge-cvpr">CVPR 2026</span>
-          <button class="pub-btn" onclick="toggleAbs(this)">Abstract</button>
-          <!-- <a class="pub-btn" href="#">PDF</a> -->
-          <!-- <a class="pub-btn" href="#">Code</a> -->
-        </div>
-        <div class="pub-abstract">Accurate region of interest segmentation in medical images requires both precise local boundary modeling and sufficient global contextual understanding, yet existing architectures often emphasize one at the expense of the other. We propose CrossStream-Seg, a boundary-sensitive ROI encoder built on a cross-guided two-stream encoder module that integrates ResNet-based local representation learning and Vision Mamba-based global contextual modeling. To enable effective interaction between the two streams, we introduce a Cross-Gated Stage Fusion Module, which performs feature alignment, selective cross-stream refinement, and fused multi-scale feature generation throughout the encoder hierarchy. The resulting features are decoded through a shared segmentation pathway and trained with boundary-aware signed-distance supervision to improve geometric consistency near challenging boundaries. The proposed design remains lightweight and structurally simple while explicitly addressing both representation alignment and boundary sensitivity. Experimental results on cerebral aneurysm in DSA, stroke in MRI, and breast tumor in ultrasound imaging modalities show that CrossStream-Seg consistently improves both overlap-based and boundary-aware metrics over counterpart baselines including convolution and transformer-based models. The results indicate that combining structured local-global feature interaction with boundary-aware geometric supervision provides a robust and general framework for medical region of interest segmentation.</div>
-      </div>
-    </li>
-
-  </ol>
-
-  <!-- AWARDS -->
-  <h2 id="awards">Awards &amp; Honors</h2>
-
-  <div class="award-item">
-    <svg class="award-icon" viewBox="0 0 24 24"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z"/></svg>
-    <div class="award-text"><strong>CVPR 2026 Fully Sponsored Trip</strong> — Awarded full paper registration and travel sponsorship to present research at CVPR 2026 (Denver, Colorado).</div>
+    </div>
+    <div class="glass">
+      <div class="logo" style="background:#0b3d91">NU</div>
+      <h3>BS in Mathematics</h3>
+      <div class="org"><a href="https://nust.edu.pk">NUST</a>, Islamabad, Pakistan</div>
+      <div class="meta">National University of Sciences and Technology</div>
+    </div>
   </div>
+</section>
 
-  <div class="award-item">
-    <svg class="award-icon" viewBox="0 0 24 24"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z"/></svg>
-    <div class="award-text"><strong>University of Michigan Conference Travel Award — $5,000</strong> — Awarded to present at ISBI 2026 in London, UK.</div>
+<!-- PUBLICATIONS -->
+<section id="publications" class="rv">
+  <div class="eyebrow">Research</div><h2>Publications</h2>
+
+  <article class="pub glass">
+    <div class="thumb"><img src="cvpr2026_ARAN.png" alt="ARAN thumbnail" onerror="this.remove()" /></div>
+    <div>
+      <span class="badge cvpr">CVPR 2026</span>
+      <h3>ARAN: Leveraging Foundation Models for Vasculature-Tree-Informed ARtery-Aware Intracranial ANeurysm Detection in 3D CTA and ToF-MRA</h3>
+      <div class="auth"><b>Muzammal Shafique</b>, Nasir Rahim, Muhammad Saad Saeed, Ghaus Malik, Khalid M. Malik</div>
+      <div class="venue">IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 2026</div>
+      <button class="pbtn" onclick="toggleAbs(this)">Abstract</button>
+      <div class="abs">Computed Tomography Angiography and Time-of-Flight Magnetic Resonance Angiography serve as clinical standards for non-invasive intracranial aneurysm assessment; however, automated detection and precise localization remain significant challenges. Existing computational methods treat aneurysm detection as a binary detection task. Critically, these approaches typically neglect the identification of the parent artery, a vital parameter for hemodynamic rupture risk assessment and surgical planning. To address these limitations, we present ARAN, an ARtery-aware intracranial ANeurysm detection framework that leverages foundation model representations and vascular geometry priors from CTA and ToF-MRA. Our approach combines a finetuned VISTA3D encoder for volumetric feature extraction with a graph-based geometric branch that models artery specific geometric descriptors, including radius profiles, eccentricity, and Frenet-Serret’s curvature-torsion sequences derived from vessel centerlines. The two branches are fused through Geometry-Gated Cross-Attention, enabling geometry-aware modulation of visual features. Experiments on publicly available datasets demonstrate state of-the-art artery-level classification accuracy of 78.2% on CTA and 85.8% on ToF-MRA, outperforming vision-only and geometry-only baselines.</div>
+    </div>
+  </article>
+
+  <article class="pub glass">
+    <div class="thumb"><img src="isbi2026.png" alt="FocusSDF thumbnail" onerror="this.remove()" /></div>
+    <div>
+      <span class="badge isbi">ISBI 2026</span>
+      <h3>FocusSDF: Boundary-Aware Learning for Medical Image Segmentation via Signed Distance Supervision</h3>
+      <div class="auth"><b>Muzammal Shafique</b>, Nasir Rahim, Jamil Ahmad, Mohammad Siadat, Khalid Malik, Ghaus Malik</div>
+      <div class="venue">23rd IEEE International Symposium on Biomedical Imaging (ISBI), 2026</div>
+      <button class="pbtn" onclick="toggleAbs(this)">Abstract</button><a class="pbtn" href="https://arxiv.org/pdf/2511.11864">PDF</a>
+      <div class="abs">Segmentation of medical images constitutes an essential component of medical image analysis, providing the foundation for precise diagnosis and efficient therapeutic interventions in clinical practices. Despite substantial progress, most segmentation models do not explicitly encode boundary information; as a result, making boundary preservation a persistent challenge in medical image segmentation. To address this challenge, we introduce FocusSDF, a novel loss function based on the signed distance functions (SDFs), which redirects the network to concentrate on boundary regions by adaptively assigning higher weights to pixels closer to the lesion or organ boundary, effectively making it boundary aware. To rigorously validate FocusSDF, we perform extensive evaluations against five state-of-the-art medical image segmentation models, including the foundation model MedSAM, using four distance-based loss functions across diverse datasets covering cerebral aneurysm, stroke, liver, and breast tumor segmentation tasks spanning multiple imaging modalities. The experimental results consistently demonstrate the superior performance of FocusSDF over existing distance transform based loss functions.</div>
+    </div>
+  </article>
+
+  <article class="pub glass">
+    <div class="thumb"><img src="cvpr2026_CrossStream-Seg.png" alt="CrossStream-Seg thumbnail" onerror="this.remove()" /></div>
+    <div>
+      <span class="badge cvpr">CVPR 2026</span>
+      <h3>CrossStream-Seg: A Cross-Guided Two-Stream Learning for Boundary-Sensitive ROI Segmentation</h3>
+      <div class="auth">Nasir Rahim, <b>Muzammal Shafique</b>, Ghaus Malik, Khalid M. Malik</div>
+      <div class="venue">IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 2026</div>
+      <button class="pbtn" onclick="toggleAbs(this)">Abstract</button>
+      <div class="abs">Accurate region of interest segmentation in medical images requires both precise local boundary modeling and sufficient global contextual understanding, yet existing architectures often emphasize one at the expense of the other. We propose CrossStream-Seg, a boundary-sensitive ROI encoder built on a cross-guided two-stream encoder module that integrates ResNet-based local representation learning and Vision Mamba-based global contextual modeling. To enable effective interaction between the two streams, we introduce a Cross-Gated Stage Fusion Module, which performs feature alignment, selective cross-stream refinement, and fused multi-scale feature generation throughout the encoder hierarchy. The resulting features are decoded through a shared segmentation pathway and trained with boundary-aware signed-distance supervision to improve geometric consistency near challenging boundaries. The proposed design remains lightweight and structurally simple while explicitly addressing both representation alignment and boundary sensitivity. Experimental results on cerebral aneurysm in DSA, stroke in MRI, and breast tumor in ultrasound imaging modalities show that CrossStream-Seg consistently improves both overlap-based and boundary-aware metrics over counterpart baselines including convolution and transformer-based models. The results indicate that combining structured local-global feature interaction with boundary-aware geometric supervision provides a robust and general framework for medical region of interest segmentation.</div>
+    </div>
+  </article>
+</section>
+
+<!-- AWARDS -->
+<section id="awards" class="rv">
+  <div class="eyebrow">Recognition</div><h2>Awards &amp; Honors</h2>
+  <div class="awards">
+    <div class="glass award"><span class="em">✈️</span><b>CVPR 2026 Fully Sponsored Trip</b>Awarded full paper registration and travel sponsorship to present research at CVPR 2026 (Denver, Colorado).</div>
+    <div class="glass award"><span class="em">🏆</span><b>UMich Conference Travel Award · $5,000</b>Awarded to present at ISBI 2026 in London, UK.</div>
+    <div class="glass award"><span class="em">🥇</span><b>AI in Research Symposium Award · $1,000</b>Recognized at the University of Michigan's AI in Research Symposium 2026, one of the institution's most prestigious research recognition programs.</div>
+    <div class="glass award"><span class="em">🎓</span><b>UMich Non-Resident Graduate Scholarship</b>Merit-based scholarship awarded to incoming graduate students.</div>
+    <div class="glass award"><span class="em">⭐</span><b>PM's Ehsaas Undergraduate Scholarship</b>Fully funded competitive scholarship covering the complete BS degree at NUST, Pakistan.</div>
+    <div class="glass award"><span class="em">📜</span><b>Dean's Merit Scholarship Award</b>Awarded by NUST for academic excellence.</div>
+    <div class="glass award"><span class="em">🌍</span><b>Russian Government Scholarship 2023</b>Offered a fully funded scholarship for Masters in Artificial Intelligence.</div>
   </div>
+</section>
 
-  <div class="award-item">
-    <svg class="award-icon" viewBox="0 0 24 24"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z"/></svg>
-    <div class="award-text"><strong>AI in Research Symposium Award — $1,000</strong> — Recognized at the University of Michigan's AI in Research Symposium 2026, one of the institution's most prestigious research recognition programs.</div>
-  </div>
-
-  <div class="award-item">
-    <svg class="award-icon" viewBox="0 0 24 24"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z"/></svg>
-    <div class="award-text"><strong>University of Michigan Non-Resident Graduate Scholarship</strong> — Merit-based scholarship awarded to incoming graduate students.</div>
-  </div>
-
-  <div class="award-item">
-    <svg class="award-icon" viewBox="0 0 24 24"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z"/></svg>
-    <div class="award-text"><strong>Prime Minister's Ehsaas Undergraduate Scholarship</strong> — Fully funded competitive scholarship covering the complete BS degree at NUST, Pakistan.</div>
-  </div>
-
-  <div class="award-item">
-    <svg class="award-icon" viewBox="0 0 24 24"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z"/></svg>
-    <div class="award-text"><strong>Dean's Merit Scholarship Award</strong> — Awarded by NUST for academic excellence.</div>
-  </div>
-
-  <div class="award-item">
-    <svg class="award-icon" viewBox="0 0 24 24"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z"/></svg>
-    <div class="award-text"><strong>Russian Government Scholarship 2023</strong> — Offered a fully funded scholarship for Masters in Artificial Intelligence.</div>
-  </div>
-
+<footer>© Copyright 2026 Muzammal Shafique.</footer>
 </div>
 
-<!-- FOOTER -->
-<footer>
-  <p>© Copyright 2026 Muzammal Shafique.</p>
-</footer>
-
 <script>
-  function toggleAbs(btn) {
-    const abs = btn.closest('.pub-info').querySelector('.pub-abstract');
-    const isOpen = abs.classList.toggle('open');
-    btn.textContent = isOpen ? 'Hide' : 'Abs';
-  }
+function toggleAbs(btn){
+  const a=btn.parentElement.querySelector('.abs');
+  btn.textContent=a.classList.toggle('open')?'Hide':'Abstract';
+}
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.08});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 
-  document.querySelectorAll('nav a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-      const id = a.getAttribute('href');
-      const el = document.querySelector(id);
-      if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth' }); }
-    });
-  });
+const links=[...document.querySelectorAll('.pill a[href^="#"]')];
+const spy=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){links.forEach(l=>l.classList.toggle('on',l.getAttribute('href')==='#'+e.target.id))}}),{rootMargin:'-40% 0px -55% 0px'});
+document.querySelectorAll('section[id],#top').forEach(s=>spy.observe(s));
 
-  const themeBtn = document.getElementById('themeBtn');
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  if (prefersDark) { document.body.classList.add('dark'); themeBtn.textContent = '☀️'; }
-
-  themeBtn.addEventListener('click', () => {
-    const isDark = document.body.classList.toggle('dark');
-    themeBtn.textContent = isDark ? '☀️' : '🌙';
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-  });
-
-  const saved = localStorage.getItem('theme');
-  if (saved === 'dark') { document.body.classList.add('dark'); themeBtn.textContent = '☀️'; }
-  else if (saved === 'light') { document.body.classList.remove('dark'); themeBtn.textContent = '🌙'; }
+const btn=document.getElementById('themeBtn');
+function setTheme(light){document.body.classList.toggle('light',light);btn.textContent=light?'🌙':'☀️'}
+let saved=null;try{saved=localStorage.getItem('theme')}catch(e){}
+setTheme(saved?saved==='light':false);
+btn.onclick=()=>{const l=!document.body.classList.contains('light');setTheme(l);try{localStorage.setItem('theme',l?'light':'dark')}catch(e){}};
 </script>
-
 </body>
 </html>
